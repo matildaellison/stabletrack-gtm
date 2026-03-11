@@ -43,6 +43,7 @@
   .g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
   @media (max-width: 900px) { .g4 { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 640px) { .g3, .g2 { grid-template-columns: 1fr; } .g4 { grid-template-columns: 1fr 1fr; } }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 3px #C6761E33} 50%{box-shadow:0 0 0 6px #C6761E11} }
 </style>
 </head>
 <body>
@@ -55,20 +56,20 @@ const { useState } = React;
 const HUBSPOT = {
   contacts: { total: 805, customers: 411, subscribers: 339, leads: 41 },
   deals: [
-    { name: "Lauren Alderman",     pms: "ImproMed",    amount: 2400, requestedContact: true },
-    { name: "Lu Ann Groves",       pms: "Antech",      amount: 2400, requestedContact: true },
-    { name: "Rebecca Gervin",      pms: "Ezyvet",      amount: 2400, requestedContact: true },
-    { name: "Kenneth Allison",     pms: "DVM Manager", amount: 2400, requestedContact: true },
-    { name: "Leah Martin",         pms: "Shepherd",    amount: 2400, requestedContact: true },
-    { name: "Lara Stephens-Brown", pms: "DSV",         amount: 2400, requestedContact: true },
-    { name: "Michelle Clarke",     pms: "None",        amount: 2400, requestedContact: true },
-    { name: "Teagan MacDonald",    pms: "None",        amount: 2400, requestedContact: true },
-    { name: "Mallorie Humble",     pms: "HVMS",        amount: 2400, requestedContact: true },
-    { name: "Maria Sequeira",      pms: "None",        amount: 2400, requestedContact: true },
-    { name: "Natalia Cortes",      pms: "None",        amount: 2400, requestedContact: true },
-    { name: "Amy Fitzgerald",      pms: "Ezyvet",      amount: 2400, requestedContact: true },
-    { name: "Sara Wefel",          pms: "Vet View",    amount: 2400, requestedContact: true },
-    { name: "Reagan Hart",         pms: "HVMS",        amount: 2400, requestedContact: true },
+    { name: "Lauren Alderman",     pms: "ImproMed",    amount: 2388, requestedContact: true },
+    { name: "Lu Ann Groves",       pms: "Antech",      amount: 2388, requestedContact: true },
+    { name: "Rebecca Gervin",      pms: "Ezyvet",      amount: 2388, requestedContact: true },
+    { name: "Kenneth Allison",     pms: "DVM Manager", amount: 2388, requestedContact: true },
+    { name: "Leah Martin",         pms: "Shepherd",    amount: 2388, requestedContact: true },
+    { name: "Lara Stephens-Brown", pms: "DSV",         amount: 2388, requestedContact: true },
+    { name: "Michelle Clarke",     pms: "None",        amount: 2388, requestedContact: true },
+    { name: "Teagan MacDonald",    pms: "None",        amount: 2388, requestedContact: true },
+    { name: "Mallorie Humble",     pms: "HVMS",        amount: 2388, requestedContact: true },
+    { name: "Maria Sequeira",      pms: "None",        amount: 2388, requestedContact: true },
+    { name: "Natalia Cortes",      pms: "None",        amount: 2388, requestedContact: true },
+    { name: "Amy Fitzgerald",      pms: "Ezyvet",      amount: 2388, requestedContact: true },
+    { name: "Sara Wefel",          pms: "Vet View",    amount: 2388, requestedContact: true },
+    { name: "Reagan Hart",         pms: "HVMS",        amount: 2388, requestedContact: true },
   ],
   sources: [
     { source: "AAEP Conference 2025",     count: 930, notes: "Full attendee list — 928 practising members" },
@@ -174,7 +175,7 @@ function Stat({ val, label, sub, accent=C.amber }) {
       background:"#fff", border:`1.5px solid ${C.border}`,
       borderLeft:`4px solid ${accent}`, borderRadius:10, padding:"16px 18px",
     }}>
-      <div style={{fontFamily:"Fraunces,serif", fontSize:26, fontWeight:700, color:C.espresso, lineHeight:1}}>{val}</div>
+      <div style={{fontFamily:"Manrope,sans-serif", fontSize:20, fontWeight:700, color:C.espresso, lineHeight:1}}>{val}</div>
       <div style={{fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:600, marginTop:5}}>{label}</div>
       {sub && <div style={{fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginTop:2}}>{sub}</div>}
     </div>
@@ -257,7 +258,7 @@ function SequencePlanner() {
         <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:16, flexWrap:"wrap", gap:8}}>
           <div>
             <Lbl style={{marginBottom:4}}>Sequence Plan</Lbl>
-            <div style={{fontFamily:"Fraunces,serif", fontSize:18, fontWeight:600, color:C.espresso}}>{seq.name}</div>
+            <div style={{fontFamily:"Manrope,sans-serif", fontSize:13, fontWeight:700, color:C.espresso}}>{seq.name}</div>
             <div style={{fontFamily:"Manrope,sans-serif", fontSize:12, color:C.muted, marginTop:3}}>Goal: {seq.goal}</div>
           </div>
           <button onClick={() => setAdding(!adding)} style={{
@@ -300,7 +301,7 @@ function SequencePlanner() {
                 position:"relative", zIndex:1,
               }}>
                 <div style={{fontFamily:"Manrope,sans-serif", fontSize:8, fontWeight:800, color:"rgba(255,255,255,0.65)", letterSpacing:"0.1em", textTransform:"uppercase"}}>Day</div>
-                <div style={{fontFamily:"Fraunces,serif", fontSize:17, fontWeight:700, color:"#fff", lineHeight:1}}>{e.day}</div>
+                <div style={{fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:800, color:"#fff", lineHeight:1}}>{e.day}</div>
               </div>
               <div style={{flex:1, background:C.creamDk, borderRadius:8, padding:"10px 14px", border: e.custom ? `1.5px solid ${C.espresso}22` : undefined}}>
                 <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:8, flexWrap:"wrap"}}>
@@ -328,18 +329,1448 @@ function SequencePlanner() {
 }
 
 // ── TABS ──────────────────────────────────────────────────────────────────────
+// ── TOOLTIP ───────────────────────────────────────────────────────────────────
+function Tip({ text, children }) {
+  const [show, setShow] = useState(false);
+  const [pos, setPos]   = useState({ x: 0, y: 0 });
+  return (
+    <span style={{ position: "relative", display: "inline-block" }}
+      onMouseEnter={e => { setShow(true); setPos({ x: e.clientX, y: e.clientY }); }}
+      onMouseLeave={() => setShow(false)}
+      onMouseMove={e => setPos({ x: e.clientX, y: e.clientY })}
+    >
+      {children}
+      <span style={{
+        display: "inline-flex", alignItems: "center", justifyContent: "center",
+        width: 13, height: 13, borderRadius: "50%",
+        background: C.border, color: C.muted,
+        fontSize: 8, fontWeight: 800, fontFamily: "Manrope,sans-serif",
+        cursor: "default", marginLeft: 4, verticalAlign: "middle",
+        border: `1px solid ${C.muted}44`,
+      }}>?</span>
+      {show && (
+        <div style={{
+          position: "fixed",
+          left: pos.x + 12,
+          top: pos.y - 8,
+          zIndex: 9999,
+          background: C.espresso,
+          color: "#fff",
+          fontFamily: "Manrope,sans-serif",
+          fontSize: 11,
+          lineHeight: 1.5,
+          padding: "8px 12px",
+          borderRadius: 7,
+          maxWidth: 240,
+          pointerEvents: "none",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+        }}>{text}</div>
+      )}
+    </span>
+  );
+}
+
+// ── AI AGENT ──────────────────────────────────────────────────────────────────
+function AIAgent() {
+  const { useState: useS, useRef } = React;
+  const [open, setOpen]     = useS(false);
+  const [msgs, setMsgs]     = useS([{ role: "assistant", text: "Hi! I'm your StableTrack marketing assistant. Ask me anything about your pipeline, sequences, ICP, or what to prioritise next." }]);
+  const [input, setInput]   = useS("");
+  const [loading, setLoading] = useS(false);
+  const bottomRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (bottomRef.current) bottomRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [msgs]);
+
+  async function send() {
+    const q = input.trim();
+    if (!q || loading) return;
+    setInput("");
+    const next = [...msgs, { role: "user", text: q }];
+    setMsgs(next);
+    setLoading(true);
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1000,
+          system: `You are a sharp, concise marketing strategist embedded inside the StableTrack Marketing Command Center dashboard. You have deep context about StableTrack:
+
+PRODUCT: StableTrack is an AI-first equine practice management platform, launched Jan 2026, built exclusively for horse vets. $199/mo Basic plan (first 3 months 50% off).
+
+CURRENT STATUS (Mar 2026):
+- 1 paying user, 41 inactive, 1 at-risk (43 total users tried)
+- 805 contacts in HubSpot (528 missing — AAEP CSV not yet re-imported)
+- 14 open pipeline deals ($2,388 each) — all AAEP survey respondents who requested follow-up
+- 4 email sequences ready to launch: User Reactivation (41), AAEP Survey Follow-Up (14), AAEP Conference Nurture (930), Keystone Cross-Sell (425)
+
+ICP: Primary = ambulatory equine vets; Secondary = equine-only clinics; Tertiary = teaching hospitals
+COMPETITORS: ThoroVet, HVMS, Navetor, Cassadol
+KEY ADVANTAGE: Only equine-specific PMS with native PACS integration (Asteris Keystone)
+PARENT: Asteris (also makes Keystone PACS for veterinary imaging)
+
+Be direct, specific, and actionable. Keep responses under 150 words. Use bullet points only when listing 3+ items. Never hedge unnecessarily.`,
+          messages: next.map(m => ({ role: m.role === "user" ? "user" : "assistant", content: m.text })),
+        }),
+      });
+      const data = await res.json();
+      const reply = data?.content?.[0]?.text || "Sorry, something went wrong. Try again.";
+      setMsgs(p => [...p, { role: "assistant", text: reply }]);
+    } catch (e) {
+      setMsgs(p => [...p, { role: "assistant", text: "Network error. Make sure you're connected and try again." }]);
+    }
+    setLoading(false);
+  }
+
+  function onKey(e) { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }
+
+  const SUGGESTIONS = [
+    "What should I do first this week?",
+    "Which of my 14 deals is most likely to convert?",
+    "Write a subject line for the reactivation email",
+    "How do I position against HVMS?",
+  ];
+
+  return (
+    <>
+      {/* FAB */}
+      <button onClick={() => setOpen(!open)} style={{
+        position: "fixed", bottom: 28, right: 28, zIndex: 1000,
+        width: 52, height: 52, borderRadius: "50%",
+        background: C.amber, border: "none", cursor: "pointer",
+        boxShadow: "0 4px 20px rgba(198,118,30,0.45)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        transition: "transform 0.2s, box-shadow 0.2s",
+        fontSize: 22,
+      }}
+        onMouseEnter={e => e.currentTarget.style.transform = "scale(1.1)"}
+        onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+        title="Ask your marketing AI"
+      >
+        {open ? "✕" : "✦"}
+      </button>
+
+      {/* Panel */}
+      {open && (
+        <div style={{
+          position: "fixed", bottom: 92, right: 28, zIndex: 1000,
+          width: 360, maxHeight: 520,
+          background: "#fff", borderRadius: 14,
+          border: `1.5px solid ${C.border}`,
+          boxShadow: "0 8px 40px rgba(62,39,35,0.18)",
+          display: "flex", flexDirection: "column",
+          overflow: "hidden",
+        }}>
+          {/* Header */}
+          <div style={{ background: C.espresso, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 8, height: 28, borderRadius: 3, background: C.amber }} />
+            <div>
+              <div style={{ fontFamily: "Fraunces,serif", color: "#fff", fontSize: 14, fontWeight: 600 }}>Marketing Assistant</div>
+              <div style={{ color: C.muted, fontSize: 9, letterSpacing: ".12em", textTransform: "uppercase" }}>StableTrack context loaded</div>
+            </div>
+          </div>
+
+          {/* Messages */}
+          <div style={{ flex: 1, overflowY: "auto", padding: "14px 14px 8px", display: "flex", flexDirection: "column", gap: 10 }}>
+            {msgs.map((m, i) => (
+              <div key={i} style={{
+                alignSelf: m.role === "user" ? "flex-end" : "flex-start",
+                maxWidth: "85%",
+                background: m.role === "user" ? C.amber : C.creamDk,
+                color: m.role === "user" ? "#fff" : C.text,
+                padding: "9px 12px",
+                borderRadius: m.role === "user" ? "12px 12px 2px 12px" : "12px 12px 12px 2px",
+                fontFamily: "Manrope,sans-serif", fontSize: 12, lineHeight: 1.55,
+                whiteSpace: "pre-wrap",
+              }}>{m.text}</div>
+            ))}
+            {loading && (
+              <div style={{ alignSelf: "flex-start", background: C.creamDk, padding: "9px 14px", borderRadius: "12px 12px 12px 2px", fontFamily: "Manrope,sans-serif", fontSize: 12, color: C.muted }}>
+                Thinking…
+              </div>
+            )}
+            <div ref={bottomRef} />
+          </div>
+
+          {/* Suggestions */}
+          {msgs.length <= 1 && (
+            <div style={{ padding: "0 14px 10px", display: "flex", flexWrap: "wrap", gap: 6 }}>
+              {SUGGESTIONS.map((s, i) => (
+                <button key={i} onClick={() => { setInput(s); }} style={{
+                  fontFamily: "Manrope,sans-serif", fontSize: 10, fontWeight: 600,
+                  padding: "4px 10px", borderRadius: 20,
+                  border: `1.5px solid ${C.border}`,
+                  background: "transparent", color: C.muted,
+                  cursor: "pointer", transition: "all .15s",
+                }}
+                  onMouseEnter={e => { e.currentTarget.style.background = C.amber; e.currentTarget.style.color = "#fff"; e.currentTarget.style.borderColor = C.amber; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = C.muted; e.currentTarget.style.borderColor = C.border; }}
+                >{s}</button>
+              ))}
+            </div>
+          )}
+
+          {/* Input */}
+          <div style={{ padding: "10px 14px 12px", borderTop: `1px solid ${C.border}`, display: "flex", gap: 8 }}>
+            <textarea
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={onKey}
+              placeholder="Ask anything about StableTrack…"
+              rows={2}
+              style={{
+                flex: 1, fontFamily: "Manrope,sans-serif", fontSize: 12,
+                border: `1.5px solid ${C.border}`, borderRadius: 8,
+                padding: "8px 10px", background: C.creamDk, color: C.text,
+                resize: "none", outline: "none", lineHeight: 1.5,
+              }}
+            />
+            <button onClick={send} disabled={loading || !input.trim()} style={{
+              fontFamily: "Manrope,sans-serif", fontSize: 11, fontWeight: 700,
+              padding: "0 14px", borderRadius: 8, cursor: loading ? "default" : "pointer",
+              background: loading || !input.trim() ? C.creamDk : C.amber,
+              border: "none", color: loading || !input.trim() ? C.muted : "#fff",
+              transition: "all .15s",
+            }}>Send</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+
+// ── TASK BOARD ────────────────────────────────────────────────────────────────
+const INITIAL_TASKS = [
+  // URGENT THIS WEEK
+  {
+    id: 1, status: "todo", priority: "urgent",
+    title: "Build reactivation email sequence",
+    desc: "4 emails over 14 days for 41 inactive StableTrack users. Write copy + build in HubSpot sequences. Exclude Dr. Wilson.",
+    category: "Email", dueDate: "Mar 14", startDate: "Mar 12", endDate: "Mar 14",
+    links: [],
+    progress: 0, total: 4, progressLabel: "emails written",
+  },
+  {
+    id: 2, status: "todo", priority: "urgent",
+    title: "Build AAEP survey follow-up sequence",
+    desc: "5 emails over 18 days for 14 contacts who requested follow-up. Personalise by PMS. Check Lu Ann Groves' PMS first.",
+    category: "Email", dueDate: "Mar 14", startDate: "Mar 13", endDate: "Mar 14",
+    links: [],
+    progress: 0, total: 5, progressLabel: "emails written",
+  },
+  {
+    id: 3, status: "todo", priority: "urgent",
+    title: "Upgrade HubSpot plan — ~278 contacts still to import",
+    desc: "1,055 contacts in HubSpot, target is 1,333. Upgrade contact tier then re-import remaining AAEP conference contacts.",
+    category: "Data", dueDate: "Mar 14", startDate: "Mar 12", endDate: "Mar 14",
+    links: [{label: "HubSpot Contacts", url: "https://app.hubspot.com/contacts/442934016/contacts/list/view/all/"}],
+    progress: 1055, total: 1333, progressLabel: "contacts imported",
+  },
+  {
+    id: 4, status: "todo", priority: "urgent",
+    title: "Create StableTrack LinkedIn Company Page",
+    desc: "Set up company page: logo, banner, about section, tagline. First 4 posts: intro post, product explainer, AAEP recap, equine vet tip. Link from stabletrack.ai.",
+    category: "Social", dueDate: "Mar 17", startDate: "Mar 14", endDate: "Mar 17",
+    links: [{label: "LinkedIn Pages", url: "https://www.linkedin.com/company/setup/new/"}],
+    progress: 0, total: 5, progressLabel: "steps complete",
+  },
+  // HIGH PRIORITY
+  {
+    id: 5, status: "todo", priority: "high",
+    title: "Contact Craig Findley — DVM Manager sunset",
+    desc: "On DVM Manager / Advantage (phased out, no support). Needs to move NOW. Lead with urgency in outreach.",
+    category: "Outreach", dueDate: "Mar 13", startDate: "Mar 12", endDate: "Mar 13",
+    links: [{label: "Craig in HubSpot", url: "https://app.hubspot.com/contacts/442934016/contact/314155525592"}],
+    progress: null, total: null,
+  },
+  {
+    id: 6, status: "done", priority: "high",
+    title: "Tag Dr. Janine Wilson (Oregon Equine) as paying customer",
+    desc: "Updated lifecyclestage to customer. Excluded from reactivation sequences.",
+    category: "Data", dueDate: "Mar 13", startDate: "Mar 11", endDate: "Mar 11",
+    links: [{label: "Dr. Wilson in HubSpot", url: "https://app.hubspot.com/contacts/442934016/record/0-1/314151994856"}],
+    progress: null, total: null,
+  },
+  {
+    id: 7, status: "todo", priority: "high",
+    title: "Clarify Lu Ann Groves' current PMS",
+    desc: "Listed as 'Other' in HubSpot. Antech is teleradiology only — not a PMS. Confirm before personalising her outreach.",
+    category: "Data", dueDate: "Mar 14", startDate: "Mar 13", endDate: "Mar 14",
+    links: [{label: "Lu Ann in HubSpot", url: "https://app.hubspot.com/contacts/442934016/contact/314151995854"}],
+    progress: null, total: null,
+  },
+  {
+    id: 8, status: "todo", priority: "high",
+    title: "StableTrack one-pager sell sheet (PDF)",
+    desc: "1-page: core value prop, key features, pricing, how to get started. Use in post-demo follow-up and email sequences.",
+    category: "Assets", dueDate: "Mar 19", startDate: "Mar 17", endDate: "Mar 19",
+    links: [],
+    progress: null, total: null,
+  },
+  {
+    id: 9, status: "todo", priority: "high",
+    title: "60-second product demo video",
+    desc: "Screen capture + voiceover: intake → visit log → invoice. Embed on homepage and use in email sequences.",
+    category: "Assets", dueDate: "Mar 21", startDate: "Mar 17", endDate: "Mar 21",
+    links: [],
+    progress: null, total: null,
+  },
+  // MEDIUM PRIORITY
+  {
+    id: 10, status: "todo", priority: "medium",
+    title: "Rename HubSpot deal pipeline stages",
+    desc: "All 14 deals stuck in 'New Lead'. Rename to: Demo Booked (10%), Demo Completed (30%), Proposal Sent (60%), Closed Won, Closed Lost.",
+    category: "CRM", dueDate: "Mar 15", startDate: "Mar 15", endDate: "Mar 15",
+    links: [{label: "Deal Pipelines", url: "https://app.hubspot.com/deal-pipelines/442934016"}],
+    progress: null, total: null,
+  },
+  {
+    id: 11, status: "todo", priority: "medium",
+    title: "Launch AAEP conference nurture sequence — 930 contacts",
+    desc: "5 emails over 30 days. Top-of-funnel awareness. Hold until HubSpot plan upgraded + reactivation sequence live.",
+    category: "Email", dueDate: "Mar 21", startDate: "Mar 18", endDate: "Mar 21",
+    links: [],
+    progress: null, total: null,
+  },
+  {
+    id: 12, status: "todo", priority: "medium",
+    title: "Launch Keystone cross-sell sequence — 425 KS accounts",
+    desc: "4 emails over 16 days. Leverage existing Asteris relationship. Hold until reactivation + survey sequences running.",
+    category: "Email", dueDate: "Mar 21", startDate: "Mar 18", endDate: "Mar 21",
+    links: [],
+    progress: null, total: null,
+  },
+  {
+    id: 13, status: "todo", priority: "medium",
+    title: "Build competitive battle cards — ThoroVet + ezyVet",
+    desc: "Side-by-side comparison. ezyVet angle: built for small animal, wrong price for equine vets. Use in demos.",
+    category: "Assets", dueDate: "Mar 22", startDate: "Mar 19", endDate: "Mar 22",
+    links: [],
+    progress: null, total: null,
+  },
+  {
+    id: 14, status: "todo", priority: "medium",
+    title: "Live demo script + slide deck",
+    desc: "15-min structured demo for sales calls. Pain point → product walk. Cover: intake, schedule, invoicing, mobile.",
+    category: "Assets", dueDate: "Mar 24", startDate: "Mar 20", endDate: "Mar 24",
+    links: [],
+    progress: null, total: null,
+  },
+  {
+    id: 15, status: "todo", priority: "medium",
+    title: "Build welcome / onboarding email sequence (5 emails)",
+    desc: "Triggered on signup. Days 0, 2, 5, 10, 30. See Onboarding tab for full copy plan.",
+    category: "Email", dueDate: "Mar 28", startDate: "Mar 24", endDate: "Mar 28",
+    links: [],
+    progress: 0, total: 5, progressLabel: "emails written",
+  },
+];
+
+const PRIORITY_CONFIG = {
+  urgent: { label: "Urgent",  color: C.red,    bg: C.red    + "12" },
+  high:   { label: "High",    color: C.amber,  bg: C.amber  + "12" },
+  medium: { label: "Medium",  color: C.blue,   bg: C.blue   + "12" },
+  low:    { label: "Low",     color: C.muted,  bg: C.muted  + "12" },
+};
+
+const CAT_COLOR = {
+  Email: C.amber, Data: C.blue, Outreach: C.green,
+  CRM: C.brown, Strategy: C.espresso,
+  Assets: C.yellow, Social: "#7C3AED",
+};
+
+function TaskBoard() {
+  const [tasks, setTasks]       = React.useState(INITIAL_TASKS);
+  const [filter, setFilter]     = React.useState("all");
+  const [adding, setAdding]     = React.useState(false);
+  const [newTask, setNewTask]   = React.useState({ title: "", desc: "", priority: "medium", category: "Email", dueDate: "", link: "", linkLabel: "" });
+
+  function toggle(id) {
+    setTasks(ts => ts.map(t => t.id === id ? { ...t, status: t.status === "done" ? "todo" : "done" } : t));
+  }
+  function bump(id, priority) {
+    setTasks(ts => ts.map(t => t.id === id ? { ...t, priority } : t));
+  }
+  function addProgress(id, n) {
+    setTasks(ts => ts.map(t => t.id === id ? { ...t, progress: Math.min(t.total, (t.progress || 0) + n) } : t));
+  }
+  function addTask() {
+    if (!newTask.title.trim()) return;
+    const links = newTask.link ? [{ label: newTask.linkLabel || newTask.link, url: newTask.link }] : [];
+    setTasks(ts => [...ts, { ...newTask, id: Date.now(), status: "todo", links, progress: null, total: null }]);
+    setNewTask({ title: "", desc: "", priority: "medium", category: "Email", dueDate: "", link: "", linkLabel: "" });
+    setAdding(false);
+  }
+
+  const order   = ["urgent", "high", "medium", "low"];
+  const counts  = { all: tasks.length, todo: tasks.filter(t => t.status !== "done").length, done: tasks.filter(t => t.status === "done").length };
+  const visible = tasks
+    .filter(t => filter === "all" || (filter === "done" ? t.status === "done" : t.status !== "done"))
+    .sort((a, b) => order.indexOf(a.priority) - order.indexOf(b.priority));
+
+  const pct = Math.round((tasks.filter(t => t.status === "done").length / tasks.length) * 100);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+
+      {/* Header stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 2fr", gap: 14 }}>
+        <div style={{ background: "#fff", border: `1.5px solid ${C.border}`, borderLeft: `4px solid ${C.amber}`, borderRadius: 10, padding: "14px 18px" }}>
+          <div style={{ fontFamily: "Manrope,sans-serif", fontSize: 18, fontWeight: 700, color: C.espresso }}>{counts.todo}</div>
+          <div style={{ fontSize: 11, fontWeight: 600, marginTop: 4 }}>Open tasks</div>
+        </div>
+        <div style={{ background: "#fff", border: `1.5px solid ${C.border}`, borderLeft: `4px solid ${C.green}`, borderRadius: 10, padding: "14px 18px" }}>
+          <div style={{ fontFamily: "Manrope,sans-serif", fontSize: 18, fontWeight: 700, color: C.espresso }}>{counts.done}</div>
+          <div style={{ fontSize: 11, fontWeight: 600, marginTop: 4 }}>Completed</div>
+        </div>
+        <div style={{ background: "#fff", border: `1.5px solid ${C.border}`, borderLeft: `4px solid ${C.red}`, borderRadius: 10, padding: "14px 18px" }}>
+          <div style={{ fontFamily: "Manrope,sans-serif", fontSize: 18, fontWeight: 700, color: C.espresso }}>{tasks.filter(t => t.priority === "urgent" && t.status !== "done").length}</div>
+          <div style={{ fontSize: 11, fontWeight: 600, marginTop: 4 }}>Urgent remaining</div>
+        </div>
+        <div style={{ background: "#fff", border: `1.5px solid ${C.border}`, borderRadius: 10, padding: "14px 18px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+            <div style={{ fontSize: 11, fontWeight: 600 }}>Overall progress</div>
+            <div style={{ fontFamily: "Fraunces,serif", fontSize: 14, fontWeight: 700, color: C.amber }}>{pct}%</div>
+          </div>
+          <Bar pct={pct} h={8} />
+          <div style={{ fontSize: 10, color: C.muted, marginTop: 6 }}>{counts.done} of {tasks.length} tasks complete</div>
+        </div>
+      </div>
+
+      {/* Filter + add */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
+        <div style={{ display: "flex", gap: 6 }}>
+          {[["all","All"],["todo","Open"],["done","Done"]].map(([v, l]) => (
+            <button key={v} onClick={() => setFilter(v)} style={{
+              fontFamily: "Manrope,sans-serif", fontSize: 11, fontWeight: 700,
+              padding: "6px 14px", borderRadius: 6, cursor: "pointer",
+              border: `1.5px solid ${filter === v ? C.amber : C.border}`,
+              background: filter === v ? C.amber : "transparent",
+              color: filter === v ? "#fff" : C.muted,
+            }}>{l} ({counts[v] ?? tasks.length})</button>
+          ))}
+        </div>
+        <button onClick={() => setAdding(!adding)} style={{
+          fontFamily: "Manrope,sans-serif", fontSize: 11, fontWeight: 700,
+          padding: "7px 16px", borderRadius: 6, cursor: "pointer",
+          border: `1.5px solid ${C.amber}`, background: "transparent", color: C.amber,
+        }}>+ Add Task</button>
+      </div>
+
+      {/* Add task form */}
+      {adding && (
+        <Card style={{ background: C.creamDk }}>
+          <Lbl>New Task</Lbl>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 800, color: C.muted, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 4 }}>Title *</div>
+              <input value={newTask.title} onChange={e => setNewTask(p => ({ ...p, title: e.target.value }))} placeholder="Task title..."
+                style={{ width: "100%", fontFamily: "Manrope,sans-serif", fontSize: 12, border: `1.5px solid ${C.border}`, borderRadius: 6, padding: "7px 10px", background: "#fff" }} />
+            </div>
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 800, color: C.muted, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 4 }}>Due Date</div>
+              <input value={newTask.dueDate} onChange={e => setNewTask(p => ({ ...p, dueDate: e.target.value }))} placeholder="e.g. Mar 20"
+                style={{ width: "100%", fontFamily: "Manrope,sans-serif", fontSize: 12, border: `1.5px solid ${C.border}`, borderRadius: 6, padding: "7px 10px", background: "#fff" }} />
+            </div>
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 800, color: C.muted, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 4 }}>Priority</div>
+              <select value={newTask.priority} onChange={e => setNewTask(p => ({ ...p, priority: e.target.value }))}
+                style={{ width: "100%", fontFamily: "Manrope,sans-serif", fontSize: 12, border: `1.5px solid ${C.border}`, borderRadius: 6, padding: "7px 10px", background: "#fff" }}>
+                <option value="urgent">Urgent</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
+              </select>
+            </div>
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 800, color: C.muted, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 4 }}>Category</div>
+              <select value={newTask.category} onChange={e => setNewTask(p => ({ ...p, category: e.target.value }))}
+                style={{ width: "100%", fontFamily: "Manrope,sans-serif", fontSize: 12, border: `1.5px solid ${C.border}`, borderRadius: 6, padding: "7px 10px", background: "#fff" }}>
+                <option>Email</option><option>Data</option><option>Outreach</option><option>CRM</option><option>Strategy</option><option>Content</option>
+              </select>
+            </div>
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 800, color: C.muted, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 4 }}>Link URL</div>
+              <input value={newTask.link} onChange={e => setNewTask(p => ({ ...p, link: e.target.value }))} placeholder="https://..."
+                style={{ width: "100%", fontFamily: "Manrope,sans-serif", fontSize: 12, border: `1.5px solid ${C.border}`, borderRadius: 6, padding: "7px 10px", background: "#fff" }} />
+            </div>
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 800, color: C.muted, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 4 }}>Link Label</div>
+              <input value={newTask.linkLabel} onChange={e => setNewTask(p => ({ ...p, linkLabel: e.target.value }))} placeholder="e.g. HubSpot Sequence"
+                style={{ width: "100%", fontFamily: "Manrope,sans-serif", fontSize: 12, border: `1.5px solid ${C.border}`, borderRadius: 6, padding: "7px 10px", background: "#fff" }} />
+            </div>
+          </div>
+          <div style={{ marginBottom: 10 }}>
+            <div style={{ fontSize: 9, fontWeight: 800, color: C.muted, letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 4 }}>Description</div>
+            <textarea value={newTask.desc} onChange={e => setNewTask(p => ({ ...p, desc: e.target.value }))} placeholder="Details..."
+              style={{ width: "100%", minHeight: 60, fontFamily: "Manrope,sans-serif", fontSize: 12, border: `1.5px solid ${C.border}`, borderRadius: 6, padding: "7px 10px", background: "#fff", resize: "vertical" }} />
+          </div>
+          <div style={{ display: "flex", gap: 8 }}>
+            <button onClick={addTask} style={{ fontFamily: "Manrope,sans-serif", fontSize: 11, fontWeight: 700, padding: "7px 18px", borderRadius: 6, cursor: "pointer", background: C.amber, border: "none", color: "#fff" }}>Add Task</button>
+            <button onClick={() => setAdding(false)} style={{ fontFamily: "Manrope,sans-serif", fontSize: 11, fontWeight: 700, padding: "7px 14px", borderRadius: 6, cursor: "pointer", background: "transparent", border: `1.5px solid ${C.border}`, color: C.muted }}>Cancel</button>
+          </div>
+        </Card>
+      )}
+
+      {/* Task list */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {visible.map(t => {
+          const p = PRIORITY_CONFIG[t.priority] || PRIORITY_CONFIG.medium;
+          const catColor = CAT_COLOR[t.category] || C.muted;
+          const done = t.status === "done";
+          return (
+            <div key={t.id} style={{
+              background: done ? C.creamDk : "#fff",
+              border: `1.5px solid ${done ? C.border : p.color + "33"}`,
+              borderLeft: `4px solid ${done ? C.muted : p.color}`,
+              borderRadius: 10, padding: "14px 18px",
+              opacity: done ? 0.7 : 1,
+              transition: "all .2s",
+            }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                {/* Checkbox */}
+                <div onClick={() => toggle(t.id)} style={{
+                  minWidth: 20, height: 20, borderRadius: 5, marginTop: 1, cursor: "pointer",
+                  border: `2px solid ${done ? C.green : p.color}`,
+                  background: done ? C.green : "transparent",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  transition: "all .15s",
+                }}>
+                  {done && <span style={{ color: "#fff", fontSize: 11, fontWeight: 800 }}>✓</span>}
+                </div>
+
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 6 }}>
+                    <div style={{ fontFamily: "Manrope,sans-serif", fontSize: 13, fontWeight: 700, color: done ? C.muted : C.espresso, textDecoration: done ? "line-through" : "none" }}>{t.title}</div>
+                    <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
+                      {t.startDate && t.endDate ? (
+                        <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:700, color:C.muted, background:C.creamDk, padding:"2px 8px", borderRadius:4 }}>
+                          📅 {t.startDate} → {t.endDate}
+                        </span>
+                      ) : t.dueDate ? (
+                        <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, color:C.muted, letterSpacing:".08em" }}>Due {t.dueDate}</span>
+                      ) : null}
+                      <Badge color={catColor}>{t.category}</Badge>
+                      <select value={t.priority} onChange={e => bump(t.id, e.target.value)}
+                        style={{ fontFamily: "Manrope,sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", padding: "2px 6px", borderRadius: 4, border: `1.5px solid ${p.color}44`, background: p.bg, color: p.color, cursor: "pointer" }}>
+                        <option value="urgent">Urgent</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {t.desc && <div style={{ fontFamily: "Manrope,sans-serif", fontSize: 11, color: C.muted, marginTop: 4, lineHeight: 1.5 }}>{t.desc}</div>}
+
+                  {/* Progress bar for tracked tasks */}
+                  {t.progress !== null && t.total !== null && (
+                    <div style={{ marginTop: 8 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
+                        <span style={{ fontSize: 10, color: C.muted }}>{t.progressLabel}</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: C.amber }}>{t.progress} / {t.total}</span>
+                      </div>
+                      <Bar pct={(t.progress / t.total) * 100} h={5} />
+                      {t.id <= 2 && !done && (
+                        <div style={{ display: "flex", gap: 6, marginTop: 6 }}>
+                          {[1, 2, 3].map(n => (
+                            <button key={n} onClick={() => addProgress(t.id, n)} style={{
+                              fontFamily: "Manrope,sans-serif", fontSize: 9, fontWeight: 700,
+                              padding: "2px 8px", borderRadius: 4, cursor: "pointer",
+                              border: `1px solid ${C.amber}`, background: "transparent", color: C.amber,
+                            }}>+{n} email{n > 1 ? "s" : ""}</button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Links */}
+                  {t.links && t.links.length > 0 && (
+                    <div style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap" }}>
+                      {t.links.map((lnk, i) => (
+                        <a key={i} href={lnk.url} target="_blank" rel="noopener noreferrer" style={{
+                          fontFamily: "Manrope,sans-serif", fontSize: 10, fontWeight: 700,
+                          color: C.amber, textDecoration: "none",
+                          padding: "2px 10px", borderRadius: 4,
+                          border: `1px solid ${C.amber}44`,
+                          background: C.amber + "0D",
+                        }}>↗ {lnk.label}</a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+
+// ── ALERT BAR ─────────────────────────────────────────────────────────────────
+const ALERTS = [
+  { id:1, level:"critical", icon:"🚨", msg:"14 deal contacts have NEVER been contacted — open pipeline = $33,432. Start AAEP follow-up sequence NOW.", action:"Go to Tasks", tab:"tasks" },
+  { id:2, level:"critical", icon:"🚨", msg:"~278 contacts not yet imported. Upgrade HubSpot plan to reach all 1,333 contacts.", action:"HubSpot", url:"https://app.hubspot.com/contacts/442934016/contacts/list/view/all/" },
+  { id:3, level:"warn",     icon:"⚠️",  msg:"41 inactive StableTrack users — reactivation sequence not yet live. These are your warmest leads.", action:"Go to Sequences", tab:"sequences" },
+  { id:4, level:"warn",     icon:"⚠️",  msg:"Deal pipeline stages still named 'New Lead'. Rename before outreach begins.", action:"HubSpot Deals", url:"https://app.hubspot.com/deal-pipelines/442934016" },
+  { id:5, level:"info",     icon:"💡",  msg:"Dr. Janine Wilson (Oregon Equine) is your only paying customer at $199/mo. Onboarding & check-in sequence should be active.", action:"Go to Onboarding", tab:"onboarding" },
+];
+
+const ALERT_STYLE = {
+  critical: { bg:"#FEF2F2", border:"#FCA5A5", icon:C.red, label:"CRITICAL" },
+  warn:     { bg:"#FFFBEB", border:"#FCD34D", icon:C.yellow, label:"WARNING"  },
+  info:     { bg:"#EFF6FF", border:"#93C5FD", icon:C.blue,   label:"INFO"     },
+};
+
+function AlertBar({ onNavigate }) {
+  const [dismissed, setDismissed] = React.useState([]);
+  const visible = ALERTS.filter(a => !dismissed.includes(a.id));
+  if (!visible.length) return null;
+  return (
+    <div style={{ display:"flex", flexDirection:"column", gap:6, marginBottom:4 }}>
+      {visible.map(a => {
+        const s = ALERT_STYLE[a.level];
+        return (
+          <div key={a.id} style={{ display:"flex", alignItems:"center", gap:10, background:s.bg, border:`1.5px solid ${s.border}`, borderRadius:8, padding:"9px 14px", flexWrap:"wrap" }}>
+            <span style={{ fontSize:14 }}>{a.icon}</span>
+            <span style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700, color:s.icon, letterSpacing:".08em", textTransform:"uppercase", minWidth:60 }}>{s.label}</span>
+            <span style={{ fontFamily:"Manrope,sans-serif", fontSize:12, color:C.text, flex:1 }}>{a.msg}</span>
+            {a.url && <a href={a.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:800, color:s.icon, background:"transparent", border:`1px solid ${s.icon}44`, borderRadius:4, padding:"3px 10px", textDecoration:"none", whiteSpace:"nowrap" }}>↗ {a.action}</a>}
+            {a.tab && <button onClick={() => onNavigate(a.tab)} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:800, color:s.icon, background:"transparent", border:`1px solid ${s.icon}44`, borderRadius:4, padding:"3px 10px", cursor:"pointer", whiteSpace:"nowrap" }}>→ {a.action}</button>}
+            <button onClick={() => setDismissed(d => [...d, a.id])} style={{ background:"none", border:"none", cursor:"pointer", color:C.muted, fontSize:14, padding:"0 2px", lineHeight:1 }}>×</button>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── MINI TASK WIDGET ──────────────────────────────────────────────────────────
+function MiniTaskWidget({ onNavigate }) {
+  const urgent = INITIAL_TASKS.filter(t => t.priority === "urgent" && t.status !== "done");
+  const high   = INITIAL_TASKS.filter(t => t.priority === "high"   && t.status !== "done");
+  const done   = INITIAL_TASKS.filter(t => t.status === "done");
+  const pct    = Math.round((done.length / INITIAL_TASKS.length) * 100);
+  return (
+    <Card>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12, flexWrap:"wrap", gap:8 }}>
+        <Lbl style={{ marginBottom:0 }}>Tasks & Actions</Lbl>
+        <button onClick={() => onNavigate("tasks")} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:800, color:C.amber, background:"transparent", border:`1px solid ${C.amber}44`, borderRadius:4, padding:"3px 12px", cursor:"pointer" }}>View All Tasks →</button>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:12, marginBottom:14 }}>
+        {[
+          { val: urgent.length, label:"Urgent",    color: C.red    },
+          { val: high.length,   label:"High",      color: C.amber  },
+          { val: done.length,   label:"Completed", color: C.green  },
+          { val: pct+"%",       label:"Progress",  color: C.blue   },
+        ].map(s => (
+          <div key={s.label} style={{ textAlign:"center", padding:"10px 6px", background:C.creamDk, borderRadius:8 }}>
+            <div style={{ fontFamily:"Manrope,sans-serif", fontSize:18, fontWeight:700, color:s.color }}>{s.val}</div>
+            <div style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:700, color:C.muted, marginTop:3, textTransform:"uppercase", letterSpacing:".08em" }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+      <Bar pct={pct} h={6} />
+      <div style={{ marginTop:12, display:"flex", flexDirection:"column", gap:5 }}>
+        {[...urgent, ...high].slice(0,4).map(t => (
+          <div key={t.id} onClick={() => onNavigate("tasks")} style={{ display:"flex", alignItems:"center", gap:8, cursor:"pointer", padding:"5px 8px", borderRadius:6, background:"#fff", border:`1px solid ${C.border}` }}>
+            <div style={{ width:8, height:8, borderRadius:"50%", background: t.priority==="urgent" ? C.red : C.amber, flexShrink:0 }} />
+            <span style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.text, flex:1 }}>{t.title}</span>
+            {t.dueDate && <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, color:C.muted }}>Due {t.dueDate}</span>}
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
+}
+
+
+// ── ASSET LIBRARY ─────────────────────────────────────────────────────────────
+const ASSET_CATEGORIES = [
+  { id:"sales",    label:"Sales Collateral",  icon:"📄" },
+  { id:"howto",    label:"How-To Guides",     icon:"📚" },
+  { id:"demo",     label:"Demo Breakdowns",   icon:"🎬" },
+  { id:"brand",    label:"Brand & Design",    icon:"🎨" },
+  { id:"email",    label:"Email Templates",   icon:"📧" },
+  { id:"web",      label:"Web & Landing",     icon:"🌐" },
+  { id:"social",   label:"Social Media",      icon:"📱" },
+];
+
+const INITIAL_ASSETS = [
+  // SALES COLLATERAL
+  { id:1,  cat:"sales", status:"needed", priority:"urgent", title:"StableTrack One-Pager (PDF)",              desc:"1-page sell sheet: core value prop, 3 key features, pricing, CTA. Send after first contact or demo.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:2,  cat:"sales", status:"needed", priority:"urgent", title:"Competitive Battle Card — vs ThoroVet",    desc:"Side-by-side comparison table. Win themes: modern UI, mobile-first, lower price.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:3,  cat:"sales", status:"needed", priority:"urgent", title:"Competitive Battle Card — vs ezyVet",      desc:"Key angle: built for small animal vets, ~$500-800/mo, equine vets use it reluctantly. We're purpose-built.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:4,  cat:"sales", status:"needed", priority:"high",   title:"Pricing Sheet",                           desc:"$99.50/mo intro → $199/mo. Compare to ThoroVet, HVMS, ezyVet. Show value clearly.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:5,  cat:"sales", status:"needed", priority:"high",   title:"Product Feature Overview Deck (5 slides)", desc:"Leave-behind after demo. Key screens, core features, tagline. Not a full pitch.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:6,  cat:"sales", status:"needed", priority:"high",   title:"Live Demo Script + Talk Track",            desc:"15-min structured demo for sales calls. Pain → Product → Proof. Covers intake, schedule, invoice, mobile.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:7,  cat:"sales", status:"needed", priority:"high",   title:"Demo Environment Setup Guide",             desc:"Internal doc: how to set up a clean demo account with sample patients, visits, invoices. Repeatable.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:8,  cat:"sales", status:"needed", priority:"high",   title:"Objection Handling Guide",                 desc:"Top 10 objections + responses: 'We use paper', 'ezyVet works fine', 'Too expensive', 'No time to switch'.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:9,  cat:"sales", status:"needed", priority:"medium", title:"Discovery Call Template",                  desc:"10 questions to ask before the demo. Qualify: practice size, current PMS, pain points, budget, timeline.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:10, cat:"sales", status:"needed", priority:"medium", title:"Case Study — Dr. Janine Wilson (Oregon)",  desc:"First paying customer story. Setup, problem, solution, outcome. Quote + photo with permission.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:11, cat:"sales", status:"needed", priority:"medium", title:"ROI Calculator (interactive PDF or web)",  desc:"Hours saved vs. paper or legacy PMS × hourly rate = $ recovered. Especially relevant for DVM Manager switchers.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:12, cat:"sales", status:"needed", priority:"medium", title:"Prospect Follow-Up Email Templates",       desc:"3 templates: post-demo, no-response nudge, 'closing the loop'. Ready to personalise and send from HubSpot.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:13, cat:"sales", status:"needed", priority:"medium", title:"Sales Proposal Template",                  desc:"One-pager proposal for larger practices or groups. Includes pricing, implementation timeline, support info.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:14, cat:"sales", status:"needed", priority:"low",    title:"Referral Programme One-Pager",             desc:"'Refer a colleague' offer for current users. Details, reward structure, how to claim.", url:"", uploadedBy:"", uploadedAt:"" },
+  // HOW-TO GUIDES
+  { id:15, cat:"howto", status:"needed", priority:"urgent", title:"How-To Guide: Log Your First Visit",        desc:"Step-by-step with screenshots. 5 steps, under 2 pages. Trigger in Day-2 onboarding email.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:16, cat:"howto", status:"needed", priority:"urgent", title:"How-To Guide: Send an Invoice",            desc:"Quick guide to invoicing workflow. Include screenshot of invoice screen. Key for Day-5 email.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:17, cat:"howto", status:"needed", priority:"high",   title:"How-To Guide: Mobile App Setup",           desc:"Download, login, first patient add on mobile. For ambulatory vets in the field.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:18, cat:"howto", status:"needed", priority:"high",   title:"How-To Guide: Set Up Patient Reminders",   desc:"Automated follow-up reminders. Reduces manual chase. Core retention feature.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:19, cat:"howto", status:"needed", priority:"high",   title:"How-To Guide: Migrate from Your Old PMS",  desc:"Step-by-step import guide for common PMS: HVMS, Navetor, ezyVet, paper records. Reduces switch friction.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:20, cat:"howto", status:"needed", priority:"medium", title:"How-To Guide: Generate Monthly Reports",   desc:"Show how to pull visit summaries, revenue reports, patient history.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:21, cat:"howto", status:"needed", priority:"medium", title:"How-To Guide: Add Team Members / Staff",   desc:"User management, roles, permissions. For clinics with multiple users.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:22, cat:"howto", status:"needed", priority:"low",    title:"Quick-Start Cheat Sheet (1 page)",         desc:"Printable 1-pager: the 5 things to do in your first 30 minutes. Laminate-worthy.", url:"", uploadedBy:"", uploadedAt:"" },
+  // DEMO BREAKDOWNS
+  { id:23, cat:"demo",  status:"needed", priority:"urgent", title:"60-Second Product Demo Video",             desc:"Screen capture + voiceover: intake → visit → invoice in 60 seconds. Embed homepage + email sequences.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:24, cat:"demo",  status:"needed", priority:"urgent", title:"Feature Walkthrough: Mobile-First Intake", desc:"2–3 min Loom. Show field experience: add patient, log visit, note, photo — all on mobile.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:25, cat:"demo",  status:"needed", priority:"high",   title:"Feature Walkthrough: Invoicing in 30 Seconds", desc:"Show one-tap invoice creation from visit record. Key pain point for equine vets.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:26, cat:"demo",  status:"needed", priority:"high",   title:"Feature Walkthrough: Schedule View",       desc:"Day/week schedule view, appointment booking, route planning. Relevant for ambulatory.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:27, cat:"demo",  status:"needed", priority:"high",   title:"'Why StableTrack' Explainer (90 sec)",     desc:"Animated or talking-head. Problem: equine vets use tools built for dogs. Solution: built for horses.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:28, cat:"demo",  status:"needed", priority:"medium", title:"'StableTrack vs ezyVet' Screen Comparison", desc:"Side-by-side screen recording. Same task in both tools. No voiceover needed — the UI speaks.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:29, cat:"demo",  status:"needed", priority:"medium", title:"Customer Testimonial Video — Dr. Wilson",  desc:"1–2 min authentic testimonial. Unscripted. Permission needed. Huge credibility for top of funnel.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:30, cat:"demo",  status:"needed", priority:"medium", title:"AAEP Conference Recap Video",              desc:"Short social-ready clip. Behind-the-scenes + booth footage + attendee reactions.", url:"", uploadedBy:"", uploadedAt:"" },
+  // BRAND & DESIGN
+  { id:31, cat:"brand", status:"done",   priority:"high",   title:"Logo Suite (PNG + SVG)",                   desc:"Horizontal, icon-only, light/dark variants.", url:"", uploadedBy:"Jeronimo", uploadedAt:"Mar 2026" },
+  { id:32, cat:"brand", status:"needed", priority:"high",   title:"Brand Style Guide",                        desc:"Colors, fonts, tone of voice, do/don't. Must share with all external vendors and contractors.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:33, cat:"brand", status:"needed", priority:"high",   title:"LinkedIn Company Page — set up + branding", desc:"Create page, upload logo + banner, write about section, add tagline. Link from website.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:34, cat:"brand", status:"needed", priority:"medium", title:"Email Signature Template (HTML)",          desc:"Branded sig for all team. Name, title, phone, stabletrack.ai link, tagline.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:35, cat:"brand", status:"needed", priority:"medium", title:"Social Media Profile Templates (Canva)",   desc:"LinkedIn banner, profile image, post templates. Keep brand consistent.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:36, cat:"brand", status:"needed", priority:"medium", title:"Trade Show Booth Design",                  desc:"Pull-up banner (85×200cm) + table card for AAEP 2026. Brand amber + Fraunces headline.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:37, cat:"brand", status:"needed", priority:"low",    title:"Branded Swag / Merchandise Brief",         desc:"Spec out branded items for trade shows: notebooks, pens, totes. Brief for vendor.", url:"", uploadedBy:"", uploadedAt:"" },
+  // EMAIL TEMPLATES
+  { id:38, cat:"email", status:"needed", priority:"urgent", title:"Reactivation Sequence (4 emails)",         desc:"Inactive users. Subject lines + body copy. Build and activate in HubSpot.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:39, cat:"email", status:"needed", priority:"urgent", title:"AAEP Follow-Up Sequence (5 emails)",       desc:"Survey respondents who requested contact. PMS-personalised. First email most important.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:40, cat:"email", status:"needed", priority:"high",   title:"Welcome / Onboarding Sequence (5 emails)", desc:"Triggered on signup. Days 0, 2, 5, 10, 30. See Onboarding tab.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:41, cat:"email", status:"needed", priority:"high",   title:"AAEP Conference Nurture (5 emails)",       desc:"930 cold attendees. Top-of-funnel awareness. Hold until HubSpot upgraded.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:42, cat:"email", status:"needed", priority:"medium", title:"Keystone Cross-Sell Sequence (4 emails)",  desc:"Existing Asteris PACS customers. Leverage relationship.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:43, cat:"email", status:"needed", priority:"medium", title:"Trial Expiry / Conversion Nudge (3 emails)", desc:"Day -7, -3, -1 before trial ends. Urgency + value recap + easy CTA to upgrade.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:44, cat:"email", status:"needed", priority:"medium", title:"Win-Back / Churn Recovery Email",          desc:"For cancelled users. 30-day check-in: what's changed, what they're missing, comeback offer.", url:"", uploadedBy:"", uploadedAt:"" },
+  // WEB & LANDING
+  { id:45, cat:"web",   status:"needed", priority:"high",   title:"Homepage Refresh — equine-only messaging", desc:"Remove mixed-species refs. Lead with ambulatory equine vets. New H1, hero, social proof.", url:"https://stabletrack.ai", uploadedBy:"", uploadedAt:"" },
+  { id:46, cat:"web",   status:"needed", priority:"high",   title:"Landing Page — ezyVet Displacement",       desc:"PPC/SEO target. 'Built for small animal. Not for you.' Capture switchers.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:47, cat:"web",   status:"needed", priority:"high",   title:"Demo Booking Page",                        desc:"Calendly or HubSpot meeting embed. Required before email sequences launch.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:48, cat:"web",   status:"needed", priority:"medium", title:"Case Study Page — Dr. Wilson",             desc:"Long-form story page. Link from sequences, demo follow-up, homepage.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:49, cat:"web",   status:"needed", priority:"medium", title:"Pricing Page",                             desc:"Transparent pricing. Compare tiers. Address 'is this right for me?' question.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:50, cat:"web",   status:"needed", priority:"low",    title:"Knowledge Base / Help Centre",             desc:"20–30 articles. Host on Intercom, HubSpot, or Notion. Link from in-app help button.", url:"", uploadedBy:"", uploadedAt:"" },
+  // SOCIAL
+  { id:51, cat:"social",status:"needed", priority:"urgent", title:"LinkedIn Company Page — launch + first 4 posts", desc:"Intro post, product explainer, AAEP recap, equine vet tip. Establish presence.", url:"https://www.linkedin.com/company/setup/new/", uploadedBy:"", uploadedAt:"" },
+  { id:52, cat:"social",status:"needed", priority:"high",   title:"LinkedIn Content Calendar (4 posts/mo)",   desc:"Monthly topics: product tip, customer story, industry insight, team moment.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:53, cat:"social",status:"needed", priority:"medium", title:"AAEP Post-Show Content Pack",              desc:"3–5 posts: photos, quote cards, takeaways from the event.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:54, cat:"social",status:"needed", priority:"medium", title:"'Day in the Life' Video — Ambulatory Vet", desc:"Follow a vet for a day with StableTrack. Authentic brand content. Reel format.", url:"", uploadedBy:"", uploadedAt:"" },
+  { id:55, cat:"social",status:"needed", priority:"low",    title:"User-Generated Content Programme",         desc:"Encourage customers to post about StableTrack. Provide hashtag, reshare plan.", url:"", uploadedBy:"", uploadedAt:"" },
+];
+
+function AssetLibrary() {
+  const [assets, setAssets]     = React.useState(INITIAL_ASSETS);
+  const [activeCat, setActiveCat] = React.useState("all");
+  const [adding, setAdding]     = React.useState(false);
+  const [newAsset, setNewAsset] = React.useState({ cat:"sales", title:"", desc:"", priority:"medium", url:"" });
+  const [uploadTarget, setUploadTarget] = React.useState(null);
+  const [linkVal, setLinkVal]   = React.useState("");
+
+  const filtered = activeCat === "all" ? assets : assets.filter(a => a.cat === activeCat);
+  const doneCt   = assets.filter(a => a.status === "done").length;
+  const urgCt    = assets.filter(a => a.priority === "urgent" && a.status !== "done").length;
+
+  function toggleDone(id) {
+    setAssets(as => as.map(a => a.id === id ? { ...a, status: a.status === "done" ? "needed" : "done", uploadedAt: a.status !== "done" ? new Date().toLocaleDateString("en-US",{month:"short",year:"numeric"}) : "" } : a));
+  }
+  function saveLink(id) {
+    setAssets(as => as.map(a => a.id === id ? { ...a, url: linkVal, status:"done", uploadedAt: new Date().toLocaleDateString("en-US",{month:"short",year:"numeric"}) } : a));
+    setUploadTarget(null); setLinkVal("");
+  }
+  function addAsset() {
+    if (!newAsset.title.trim()) return;
+    setAssets(as => [...as, { ...newAsset, id: Date.now(), status:"needed", uploadedBy:"", uploadedAt:"" }]);
+    setNewAsset({ cat:"sales", title:"", desc:"", priority:"medium", url:"" });
+    setAdding(false);
+  }
+
+  const pct = Math.round((doneCt / assets.length) * 100);
+
+  return (
+    <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
+      <Card style={{ background:C.espresso }}>
+        <Lbl style={{ color:C.muted }}>Sales & Brand Assets</Lbl>
+        <div style={{ fontFamily:"Fraunces,serif", fontSize:14, color:"#fff", fontWeight:600, letterSpacing:".01em" }}>Collateral · Branding · Videos · Templates</div>
+      </Card>
+
+      {/* Stats */}
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:14 }}>
+        {[
+          { val:doneCt,            label:"Assets ready",   color:C.green  },
+          { val:assets.length-doneCt, label:"Still needed", color:C.amber  },
+          { val:urgCt,             label:"Urgent missing", color:C.red    },
+          { val:pct+"%",           label:"Complete",       color:C.blue   },
+        ].map(s => (
+          <div key={s.label} style={{ background:"#fff", border:`1.5px solid ${C.border}`, borderLeft:`4px solid ${s.color}`, borderRadius:10, padding:"14px 18px" }}>
+            <div style={{ fontFamily:"Manrope,sans-serif", fontSize:20, fontWeight:700, color:s.color }}>{s.val}</div>
+            <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:600, marginTop:4, color:C.muted }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+      <Bar pct={pct} h={7} />
+
+      {/* Category tabs */}
+      <div style={{ display:"flex", gap:6, flexWrap:"wrap" }}>
+        {[{id:"all",label:"All Assets"},...ASSET_CATEGORIES].map(c => (
+          <button key={c.id} onClick={() => setActiveCat(c.id)} style={{
+            fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700,
+            padding:"6px 14px", borderRadius:6, cursor:"pointer",
+            border:`1.5px solid ${activeCat===c.id ? C.amber : C.border}`,
+            background: activeCat===c.id ? C.amber : "transparent",
+            color: activeCat===c.id ? "#fff" : C.muted,
+          }}>{c.icon || ""} {c.label}</button>
+        ))}
+        <button onClick={() => setAdding(!adding)} style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700, padding:"6px 14px", borderRadius:6, cursor:"pointer", border:`1.5px solid ${C.amber}`, background:"transparent", color:C.amber, marginLeft:"auto" }}>+ Add Asset</button>
+      </div>
+
+      {/* Add form */}
+      {adding && (
+        <Card style={{ background:C.creamDk }}>
+          <Lbl>New Asset</Lbl>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:10 }}>
+            {[
+              { key:"title", label:"Title *", ph:"e.g. Pitch Deck" },
+              { key:"url",   label:"Link (optional)", ph:"https://drive.google.com/..." },
+            ].map(f => (
+              <div key={f.key}>
+                <div style={{ fontSize:9, fontWeight:800, color:C.muted, letterSpacing:".1em", textTransform:"uppercase", marginBottom:4 }}>{f.label}</div>
+                <input value={newAsset[f.key]} onChange={e => setNewAsset(p => ({...p,[f.key]:e.target.value}))} placeholder={f.ph}
+                  style={{ width:"100%", fontFamily:"Manrope,sans-serif", fontSize:12, border:`1.5px solid ${C.border}`, borderRadius:6, padding:"7px 10px", background:"#fff" }} />
+              </div>
+            ))}
+            <div>
+              <div style={{ fontSize:9, fontWeight:800, color:C.muted, letterSpacing:".1em", textTransform:"uppercase", marginBottom:4 }}>Category</div>
+              <select value={newAsset.cat} onChange={e => setNewAsset(p => ({...p,cat:e.target.value}))}
+                style={{ width:"100%", fontFamily:"Manrope,sans-serif", fontSize:12, border:`1.5px solid ${C.border}`, borderRadius:6, padding:"7px 10px", background:"#fff" }}>
+                {ASSET_CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+              </select>
+            </div>
+            <div>
+              <div style={{ fontSize:9, fontWeight:800, color:C.muted, letterSpacing:".1em", textTransform:"uppercase", marginBottom:4 }}>Priority</div>
+              <select value={newAsset.priority} onChange={e => setNewAsset(p => ({...p,priority:e.target.value}))}
+                style={{ width:"100%", fontFamily:"Manrope,sans-serif", fontSize:12, border:`1.5px solid ${C.border}`, borderRadius:6, padding:"7px 10px", background:"#fff" }}>
+                <option value="urgent">Urgent</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+          <div style={{ marginBottom:10 }}>
+            <div style={{ fontSize:9, fontWeight:800, color:C.muted, letterSpacing:".1em", textTransform:"uppercase", marginBottom:4 }}>Description</div>
+            <textarea value={newAsset.desc} onChange={e => setNewAsset(p => ({...p,desc:e.target.value}))} placeholder="What is this asset for?"
+              style={{ width:"100%", minHeight:50, fontFamily:"Manrope,sans-serif", fontSize:12, border:`1.5px solid ${C.border}`, borderRadius:6, padding:"7px 10px", background:"#fff", resize:"vertical" }} />
+          </div>
+          <div style={{ display:"flex", gap:8 }}>
+            <button onClick={addAsset} style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700, padding:"7px 18px", borderRadius:6, cursor:"pointer", background:C.amber, border:"none", color:"#fff" }}>Add Asset</button>
+            <button onClick={() => setAdding(false)} style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700, padding:"7px 14px", borderRadius:6, cursor:"pointer", background:"transparent", border:`1.5px solid ${C.border}`, color:C.muted }}>Cancel</button>
+          </div>
+        </Card>
+      )}
+
+      {/* Asset list grouped by category */}
+      {(activeCat==="all" ? ASSET_CATEGORIES : ASSET_CATEGORIES.filter(c=>c.id===activeCat)).map(cat => {
+        const catAssets = filtered.filter(a => a.cat === cat.id);
+        if (!catAssets.length) return null;
+        return (
+          <div key={cat.id}>
+            <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:800, letterSpacing:".14em", textTransform:"uppercase", color:C.muted, marginBottom:8 }}>{cat.icon} {cat.label} — {catAssets.filter(a=>a.status==="done").length}/{catAssets.length} ready</div>
+            <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+              {catAssets.sort((a,b)=>["urgent","high","medium","low"].indexOf(a.priority)-["urgent","high","medium","low"].indexOf(b.priority)).map(a => {
+                const p = PRIORITY_CONFIG[a.priority] || PRIORITY_CONFIG.medium;
+                const done = a.status === "done";
+                return (
+                  <div key={a.id} style={{ background: done ? C.creamDk : "#fff", border:`1.5px solid ${done ? C.border : p.color+"33"}`, borderLeft:`4px solid ${done ? C.green : p.color}`, borderRadius:10, padding:"12px 16px", opacity: done ? 0.75 : 1 }}>
+                    <div style={{ display:"flex", alignItems:"flex-start", gap:10 }}>
+                      <div onClick={() => toggleDone(a.id)} style={{ minWidth:20, height:20, borderRadius:5, marginTop:1, cursor:"pointer", border:`2px solid ${done ? C.green : p.color}`, background: done ? C.green : "transparent", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                        {done && <span style={{ color:"#fff", fontSize:11, fontWeight:800 }}>✓</span>}
+                      </div>
+                      <div style={{ flex:1 }}>
+                        <div style={{ display:"flex", justifyContent:"space-between", flexWrap:"wrap", gap:6, alignItems:"flex-start" }}>
+                          <div style={{ fontFamily:"Manrope,sans-serif", fontSize:13, fontWeight:700, color: done ? C.muted : C.espresso, textDecoration: done ? "line-through" : "none" }}>{a.title}</div>
+                          <div style={{ display:"flex", gap:6, alignItems:"center", flexWrap:"wrap" }}>
+                            {done && a.uploadedAt && <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, color:C.green, fontWeight:700 }}>✓ Ready {a.uploadedAt}</span>}
+                            <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, letterSpacing:".08em", textTransform:"uppercase", padding:"2px 7px", borderRadius:4, background:p.bg, color:p.color, border:`1px solid ${p.color}33` }}>{p.label}</span>
+                          </div>
+                        </div>
+                        {a.desc && <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginTop:3, lineHeight:1.5 }}>{a.desc}</div>}
+                        <div style={{ display:"flex", gap:8, marginTop:8, flexWrap:"wrap", alignItems:"center" }}>
+                          {a.url && <a href={a.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:700, color:C.amber, textDecoration:"none", padding:"2px 10px", borderRadius:4, border:`1px solid ${C.amber}44`, background:C.amber+"0D" }}>↗ Open File</a>}
+                          {!done && uploadTarget !== a.id && (
+                            <button onClick={() => { setUploadTarget(a.id); setLinkVal(a.url||""); }} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:700, color:C.muted, background:"transparent", border:`1px solid ${C.border}`, borderRadius:4, padding:"2px 10px", cursor:"pointer" }}>+ Add Link</button>
+                          )}
+                          {uploadTarget === a.id && (
+                            <div style={{ display:"flex", gap:6, alignItems:"center", flex:1 }}>
+                              <input value={linkVal} onChange={e => setLinkVal(e.target.value)} placeholder="Paste Google Drive / Canva / Loom link..."
+                                style={{ flex:1, fontFamily:"Manrope,sans-serif", fontSize:11, border:`1.5px solid ${C.amber}`, borderRadius:5, padding:"4px 8px" }}
+                                onKeyDown={e => e.key==="Enter" && saveLink(a.id)} />
+                              <button onClick={() => saveLink(a.id)} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:800, padding:"4px 12px", borderRadius:5, cursor:"pointer", background:C.amber, border:"none", color:"#fff" }}>Save</button>
+                              <button onClick={() => setUploadTarget(null)} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, padding:"4px 8px", borderRadius:5, cursor:"pointer", background:"transparent", border:`1px solid ${C.border}`, color:C.muted }}>✕</button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── ONBOARDING TAB ─────────────────────────────────────────────────────────────
+const ONBOARDING_EMAILS = [
+  { day:0,  subject:"Welcome to StableTrack 🐴", preview:"You're in. Here's how to get your first visit logged in under 5 minutes.", goal:"Activate — get user to complete first visit log", cta:"Log Your First Visit →" },
+  { day:2,  subject:"Your mobile app is ready", preview:"StableTrack is built for the field — download the app and take it on your next call.", goal:"Drive mobile app install", cta:"Download the App →" },
+  { day:5,  subject:"Quick tip: invoice in 30 seconds", preview:"Most vets say invoicing is the worst part of the job. Here's how StableTrack handles it.", goal:"Show invoicing value — second key feature", cta:"Watch the 60-Second Demo →" },
+  { day:10, subject:"How's StableTrack working for you?", preview:"You've been using StableTrack for 10 days. We want to know what's working — and what's not.", goal:"NPS + feedback collection. Flag at-risk users.", cta:"Share Quick Feedback →" },
+  { day:30, subject:"Your first month with StableTrack", preview:"Here's a snapshot of what you've tracked — and what's coming next.", goal:"Retention + upsell. Show usage data if possible.", cta:"See Your Summary →" },
+];
+
+const IN_APP_SUPPORT = [
+  { type:"Tooltip Hints",       status:"plan",   priority:"urgent", desc:"Contextual ? tooltips on every major UI element. First-visit overlay tour covering core 5 features." },
+  { type:"Help Beacon (chat)",  status:"plan",   priority:"urgent", desc:"Intercom or HubSpot chat widget in-app. Routes to human support during business hours, FAQ bot after hours." },
+  { type:"Knowledge Base",      status:"plan",   priority:"high",   desc:"20–30 articles covering common tasks: adding a patient, invoicing, setting up reminders, mobile app setup." },
+  { type:"Video Walkthroughs",  status:"plan",   priority:"high",   desc:"Embedded Loom/YouTube videos within help articles. Especially: mobile intake, schedule view, billing." },
+  { type:"Onboarding Checklist",status:"plan",   priority:"high",   desc:"In-app progress bar: 'Complete your setup'. Triggered on first login. Items: add first patient, log first visit, set up billing." },
+  { type:"In-App Alerts",       status:"plan",   priority:"medium", desc:"Smart nudges: 'You have 3 outstanding invoices', 'Your trial ends in 5 days', 'New feature: schedule sync'." },
+  { type:"Office Hours (live)", status:"plan",   priority:"medium", desc:"Monthly 30-min Zoom Q&A session for all active users. Builds community and surfaces feature requests." },
+  { type:"Feature Changelog",   status:"plan",   priority:"medium", desc:"In-app notification when new features ship. Short, visual. Builds trust and shows active development." },
+];
+
+const CUSTOMER_NURTURE = [
+  { phase:"Month 1",    label:"Activation",    color:C.amber,   items:["Welcome sequence (5 emails, Days 0–30)","Mobile app download push (Day 2)","First visit logged milestone email","In-app onboarding checklist"] },
+  { phase:"Month 2–3",  label:"Habit Building", color:C.brown,  items:["Feature tip emails (biweekly)","NPS survey at Day 30","'You've logged X visits' progress email","In-app usage milestone alerts"] },
+  { phase:"Month 4–6",  label:"Deepening",     color:C.espresso,items:["Advanced feature walkthroughs (invoicing, reminders)","Case study / community update","Referral ask: 'Know another equine vet?'","Offer testimonial / case study feature"] },
+  { phase:"Ongoing",    label:"Retention",     color:C.green,   items:["Monthly product changelog email","Renewal reminder (30/14/7 days before)","Annual review: 'Year in review' stats","Proactive check-in if 14+ days inactive"] },
+];
+
+function OnboardingTab() {
+  const [support, setSupport] = React.useState(IN_APP_SUPPORT.map((s,i) => ({...s, id:i+1, done:false})));
+  function toggleSupport(id) { setSupport(ss => ss.map(s => s.id===id ? {...s, done:!s.done} : s)); }
+
+  return (
+    <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
+      <Card style={{ background:C.espresso }}>
+        <Lbl style={{ color:C.muted }}>Customer Onboarding & Nurture</Lbl>
+        <div style={{ fontFamily:"Fraunces,serif", fontSize:14, color:"#fff", fontWeight:600, letterSpacing:".01em" }}>Welcome Flow · In-App Support · Retention Strategy</div>
+      </Card>
+
+      {/* Current customer alert */}
+      <div style={{ background:"#EFF6FF", border:`1.5px solid #93C5FD`, borderRadius:8, padding:"10px 16px", display:"flex", gap:10, alignItems:"center" }}>
+        <span style={{ fontSize:16 }}>👤</span>
+        <div style={{ fontFamily:"Manrope,sans-serif", fontSize:12, color:C.text }}>
+          <strong>1 active paying customer:</strong> Dr. Janine Wilson, Oregon Equine — oregonequine@gmail.com — $199/mo. Currently no onboarding sequence is running. This should be active immediately.
+        </div>
+        <a href="https://app.hubspot.com/contacts/442934016/record/0-1/314151994856" target="_blank" rel="noopener noreferrer" style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:800, color:C.blue, whiteSpace:"nowrap", textDecoration:"none", border:`1px solid #93C5FD`, borderRadius:4, padding:"3px 10px" }}>↗ View in HubSpot</a>
+      </div>
+
+      {/* Onboarding email sequence */}
+      <Card>
+        <Lbl>Welcome Sequence — Days 0 to 30 (5 Emails)</Lbl>
+        <div style={{ display:"flex", flexDirection:"column", gap:0, position:"relative" }}>
+          <div style={{ position:"absolute", left:18, top:12, bottom:12, width:2, background:C.border, borderRadius:2 }} />
+          {ONBOARDING_EMAILS.map((e, i) => (
+            <div key={i} style={{ display:"flex", gap:14, paddingBottom:14, position:"relative" }}>
+              <div style={{ width:36, height:36, borderRadius:"50%", background:C.amber, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, zIndex:1 }}>
+                <span style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:800, color:"#fff" }}>D{e.day}</span>
+              </div>
+              <div style={{ flex:1, background:C.creamDk, borderRadius:8, padding:"10px 14px" }}>
+                <div style={{ fontFamily:"Manrope,sans-serif", fontSize:13, fontWeight:700, color:C.espresso }}>{e.subject}</div>
+                <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginTop:3 }}>{e.preview}</div>
+                <div style={{ display:"flex", gap:16, marginTop:8, flexWrap:"wrap" }}>
+                  <div style={{ fontFamily:"Manrope,sans-serif", fontSize:10 }}><strong style={{ color:C.brown }}>Goal:</strong> <span style={{ color:C.muted }}>{e.goal}</span></div>
+                  <div style={{ fontFamily:"Manrope,sans-serif", fontSize:10 }}><strong style={{ color:C.brown }}>CTA:</strong> <span style={{ color:C.muted }}>{e.cta}</span></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Customer nurture phases */}
+      <Card>
+        <Lbl>Customer Nurture Journey — Beyond Onboarding</Lbl>
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+          {CUSTOMER_NURTURE.map((ph, i) => (
+            <div key={i} style={{ background:C.creamDk, borderRadius:8, padding:"12px 14px", borderLeft:`4px solid ${ph.color}` }}>
+              <div style={{ display:"flex", gap:8, alignItems:"baseline", marginBottom:8 }}>
+                <span style={{ fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700, color:ph.color }}>{ph.phase}</span>
+                <Badge color={ph.color}>{ph.label}</Badge>
+              </div>
+              <ul style={{ margin:0, paddingLeft:16 }}>
+                {ph.items.map((it,j) => <li key={j} style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginBottom:3, lineHeight:1.4 }}>{it}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* In-app support checklist */}
+      <Card>
+        <Lbl>In-App Support — Build Checklist</Lbl>
+        <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginBottom:12 }}>Check off as each support layer is built and deployed in the product.</div>
+        <div style={{ display:"flex", flexDirection:"column", gap:7 }}>
+          {support.map(s => {
+            const p = PRIORITY_CONFIG[s.priority] || PRIORITY_CONFIG.medium;
+            return (
+              <div key={s.id} style={{ display:"flex", gap:10, background: s.done ? C.creamDk : "#fff", border:`1.5px solid ${s.done ? C.border : p.color+"33"}`, borderLeft:`4px solid ${s.done ? C.green : p.color}`, borderRadius:8, padding:"10px 14px", opacity: s.done ? 0.7 : 1 }}>
+                <div onClick={() => toggleSupport(s.id)} style={{ minWidth:20, height:20, borderRadius:5, marginTop:1, cursor:"pointer", border:`2px solid ${s.done ? C.green : p.color}`, background: s.done ? C.green : "transparent", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
+                  {s.done && <span style={{ color:"#fff", fontSize:11, fontWeight:800 }}>✓</span>}
+                </div>
+                <div style={{ flex:1 }}>
+                  <div style={{ display:"flex", gap:8, justifyContent:"space-between", flexWrap:"wrap" }}>
+                    <div style={{ fontFamily:"Manrope,sans-serif", fontSize:13, fontWeight:700, color: s.done ? C.muted : C.espresso, textDecoration: s.done ? "line-through" : "none" }}>{s.type}</div>
+                    <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, letterSpacing:".08em", textTransform:"uppercase", padding:"2px 7px", borderRadius:4, background:p.bg, color:p.color }}>{p.label}</span>
+                  </div>
+                  <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginTop:3, lineHeight:1.5 }}>{s.desc}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Card>
+
+      {/* Metrics to track */}
+      <Card>
+        <Lbl>Onboarding Health Metrics to Track</Lbl>
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:10 }}>
+          {[
+            { metric:"Day-1 Activation Rate",   target:"≥ 60%",  desc:"% of new signups who log a visit within 24h" },
+            { metric:"Day-30 Retention Rate",   target:"≥ 70%",  desc:"% of users still active at 30 days" },
+            { metric:"Onboarding Email Open",   target:"≥ 45%",  desc:"Open rate on welcome sequence" },
+            { metric:"Mobile App Install Rate", target:"≥ 50%",  desc:"% who download the app after signup" },
+            { metric:"NPS Score (Day 30)",      target:"≥ 40",   desc:"Net Promoter Score — industry avg for SaaS is ~31" },
+            { metric:"Trial→Paid Conversion",   target:"≥ 25%",  desc:"% of trial users converting to $199/mo plan" },
+          ].map((m, i) => (
+            <div key={i} style={{ background:C.creamDk, borderRadius:8, padding:"10px 12px" }}>
+              <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700, color:C.espresso }}>{m.metric}</div>
+              <div style={{ fontFamily:"Manrope,sans-serif", fontSize:16, fontWeight:700, color:C.amber, margin:"4px 0" }}>{m.target}</div>
+              <div style={{ fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted }}>{m.desc}</div>
+            </div>
+          ))}
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+
+// ── AI ACTIVITY PANEL ─────────────────────────────────────────────────────────
+const AI_LOG = [
+  { id:1,  status:"done",    ts:"Mar 11 · 7:26pm", icon:"✅", msg:"Tagged Dr. Janine Wilson (Oregon Equine) as paying customer in HubSpot. Lifecyclestage updated → customer.", link:{ label:"View in HubSpot", url:"https://app.hubspot.com/contacts/442934016/record/0-1/314151994856" } },
+  { id:2,  status:"done",    ts:"Mar 11 · 7:26pm", icon:"✅", msg:"Created 7 tasks in HubSpot with priorities, due dates, and contact associations.", link:{ label:"View Tasks", url:"https://app.hubspot.com/tasks/442934016" } },
+  { id:3,  status:"done",    ts:"Mar 11 · 7:28pm", icon:"✅", msg:"Updated all 14 AAEP deal amounts to $2,388 ARR in HubSpot pipeline.", link:{ label:"View Deals", url:"https://app.hubspot.com/deals/442934016" } },
+  { id:4,  status:"done",    ts:"Mar 11 · 7:41pm", icon:"✅", msg:"Created LinkedIn Company Page task in HubSpot with brief, brand colors, and first-post plan.", link:null },
+  { id:5,  status:"done",    ts:"Mar 11 · Today",  icon:"✅", msg:"Built StableTrack GTM dashboard: 8 tabs, alert system, task tracker, asset library, onboarding plan, AI chat agent.", link:null },
+  { id:6,  status:"queued",  ts:"Up next",          icon:"⏳", msg:"Write reactivation email sequence — 4 emails for 41 inactive users. Will build in HubSpot once copy is approved.", link:null },
+  { id:7,  status:"queued",  ts:"Up next",          icon:"⏳", msg:"Write AAEP survey follow-up sequence — 5 emails, PMS-personalised for 14 contacts. Check Lu Ann Groves' PMS first.", link:null },
+  { id:8,  status:"queued",  ts:"Planned",          icon:"📋", msg:"Build welcome / onboarding email sequence — 5 emails, Days 0→30. See Onboarding tab for structure.", link:null },
+  { id:9,  status:"queued",  ts:"Planned",          icon:"📋", msg:"Draft StableTrack one-pager sell sheet (PDF). Will use brand assets, equine-only messaging.", link:null },
+  { id:10, status:"queued",  ts:"Planned",          icon:"📋", msg:"Create competitive battle cards — ThoroVet and ezyVet. Side-by-side comparison format.", link:null },
+  { id:11, status:"queued",  ts:"Planned",          icon:"📋", msg:"Write live demo script + talk track. 15-minute structured demo for sales calls.", link:null },
+  { id:12, status:"queued",  ts:"Planned",          icon:"📋", msg:"Draft how-to guides: Log First Visit, Send Invoice, Mobile Setup. PDF + help centre format.", link:null },
+];
+
+const AI_STATUS_STYLE = {
+  done:   { dot:"#3D8B37", bg:"#F0FDF4", border:"#BBF7D0" },
+  queued: { dot:"#2563EB", bg:"#EFF6FF", border:"#BFDBFE" },
+  active: { dot:"#C6761E", bg:"#FEF3C7", border:"#FDE68A" },
+};
+
+function AIActivityPanel() {
+  const [open, setOpen] = React.useState(true);
+  const [newItem, setNewItem] = React.useState("");
+  const [log, setLog] = React.useState(AI_LOG);
+
+  const done = log.filter(l => l.status === "done").length;
+  const queued = log.filter(l => l.status === "queued").length;
+
+  function addItem() {
+    if (!newItem.trim()) return;
+    setLog(l => [...l, { id: Date.now(), status:"queued", ts:"Just added", icon:"📋", msg: newItem.trim(), link:null }]);
+    setNewItem("");
+  }
+  function markDone(id) {
+    setLog(l => l.map(i => i.id === id ? { ...i, status:"done", icon:"✅", ts:"Just now" } : i));
+  }
+  function removeItem(id) {
+    setLog(l => l.filter(i => i.id !== id));
+  }
+
+  return (
+    <div style={{ background:"#fff", border:`1.5px solid ${C.border}`, borderRadius:10, overflow:"hidden" }}>
+      {/* Header */}
+      <div onClick={() => setOpen(o => !o)} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"12px 18px", cursor:"pointer", background:C.creamDk, borderBottom: open ? `1px solid ${C.border}` : "none" }}>
+        <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+          <div style={{ width:8, height:8, borderRadius:"50%", background:"#C6761E", boxShadow:"0 0 0 3px #C6761E33", animation:"pulse 2s infinite" }} />
+          <span style={{ fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700, color:C.espresso }}>AI Work Log</span>
+          <span style={{ fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted }}>— what I've done &amp; what's queued</span>
+        </div>
+        <div style={{ display:"flex", gap:10, alignItems:"center" }}>
+          <span style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:700, color:"#3D8B37", background:"#F0FDF4", border:"1px solid #BBF7D0", borderRadius:10, padding:"1px 8px" }}>{done} done</span>
+          <span style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:700, color:"#2563EB", background:"#EFF6FF", border:"1px solid #BFDBFE", borderRadius:10, padding:"1px 8px" }}>{queued} queued</span>
+          <span style={{ color:C.muted, fontSize:12 }}>{open ? "▲" : "▼"}</span>
+        </div>
+      </div>
+
+      {open && (
+        <div style={{ padding:"14px 18px" }}>
+          {/* Log entries */}
+          <div style={{ display:"flex", flexDirection:"column", gap:6, maxHeight:380, overflowY:"auto", marginBottom:12 }}>
+            {log.map(entry => {
+              const s = AI_STATUS_STYLE[entry.status] || AI_STATUS_STYLE.queued;
+              return (
+                <div key={entry.id} style={{ display:"flex", gap:10, alignItems:"flex-start", background:s.bg, border:`1px solid ${s.border}`, borderRadius:7, padding:"8px 12px" }}>
+                  <span style={{ fontSize:13, marginTop:1, flexShrink:0 }}>{entry.icon}</span>
+                  <div style={{ flex:1 }}>
+                    <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.text, lineHeight:1.45 }}>{entry.msg}</div>
+                    <div style={{ display:"flex", gap:10, marginTop:4, alignItems:"center", flexWrap:"wrap" }}>
+                      <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, color:C.muted }}>{entry.ts}</span>
+                      {entry.link && <a href={entry.link.url} target="_blank" rel="noopener noreferrer" style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:700, color:"#C6761E", textDecoration:"none" }}>↗ {entry.link.label}</a>}
+                      {entry.status === "queued" && <button onClick={() => markDone(entry.id)} style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:700, color:"#3D8B37", background:"transparent", border:"1px solid #3D8B37", borderRadius:3, padding:"1px 6px", cursor:"pointer" }}>Mark done</button>}
+                      <button onClick={() => removeItem(entry.id)} style={{ fontFamily:"Manrope,sans-serif", fontSize:9, color:C.muted, background:"transparent", border:"none", cursor:"pointer", padding:0, marginLeft:"auto" }}>✕</button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Add task input */}
+          <div style={{ display:"flex", gap:8 }}>
+            <input
+              value={newItem}
+              onChange={e => setNewItem(e.target.value)}
+              onKeyDown={e => e.key === "Enter" && addItem()}
+              placeholder="Queue a new task for AI (e.g. 'Write the ezyVet battle card')..."
+              style={{ flex:1, fontFamily:"Manrope,sans-serif", fontSize:11, border:`1.5px solid ${C.border}`, borderRadius:6, padding:"7px 10px", outline:"none" }}
+            />
+            <button onClick={addItem} style={{ fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700, padding:"7px 16px", borderRadius:6, cursor:"pointer", background:"#C6761E", border:"none", color:"#fff", whiteSpace:"nowrap" }}>+ Add to Queue</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+// ── KPI SCORECARD ─────────────────────────────────────────────────────────────
+const WEEK1_KPIS = [
+  {
+    id:"w1_1", group:"Outreach", icon:"📞",
+    label:"Pipeline deals contacted",
+    baseline:0, target:14, unit:"deals", format:"n",
+    why:"All 14 AAEP survey contacts have never been reached. $33,432 sitting cold.",
+    how:"Send first-touch email to all 14 this week. Use AAEP follow-up sequence.",
+    hubspotUrl:"https://app.hubspot.com/deals/442934016",
+  },
+  {
+    id:"w1_2", group:"Outreach", icon:"🚨",
+    label:"Craig Findley contacted",
+    baseline:0, target:1, unit:"yes/no", format:"bool",
+    why:"On DVM Manager / Advantage — sunset, no support. Highest urgency single contact.",
+    how:"Personal email or call. Lead with: 'your current software has no support — here's what to do.'",
+    hubspotUrl:"https://app.hubspot.com/contacts/442934016/contact/314155525592",
+  },
+  {
+    id:"w1_3", group:"Email Sequences", icon:"📧",
+    label:"Email sequences activated",
+    baseline:0, target:2, unit:"sequences", format:"n",
+    why:"Reactivation (41 users) + AAEP follow-up (14 contacts). Zero sequences live right now.",
+    how:"Write copy → build in HubSpot → enrol contacts → activate. Both should be live by Mar 14.",
+    hubspotUrl:"https://app.hubspot.com/sequences/442934016",
+  },
+  {
+    id:"w1_4", group:"CRM", icon:"🗃️",
+    label:"Contacts imported",
+    baseline:1055, target:1333, unit:"contacts", format:"n",
+    why:"~278 contacts missing. Upgrade HubSpot plan first, then re-import AAEP conference list.",
+    how:"Upgrade HubSpot contact tier → re-import CSV.",
+    hubspotUrl:"https://app.hubspot.com/contacts/442934016/contacts/list/view/all/",
+  },
+  {
+    id:"w1_5", group:"CRM", icon:"🔧",
+    label:"Deal stages renamed",
+    baseline:0, target:14, unit:"deals moved", format:"n",
+    why:"All 14 deals stuck in 'appointmentscheduled'. Stages need renaming before tracking pipeline movement.",
+    how:"app.hubspot.com/deal-pipelines/442934016 → rename to Demo Booked / Demo Completed / Proposal Sent.",
+    hubspotUrl:"https://app.hubspot.com/deal-pipelines/442934016",
+  },
+  {
+    id:"w1_6", group:"Brand", icon:"💼",
+    label:"LinkedIn Company Page live",
+    baseline:0, target:1, unit:"yes/no", format:"bool",
+    why:"No LinkedIn presence. Equine vet community is active on LinkedIn. AAEP contacts will look you up.",
+    how:"Create page, upload logo + banner, write about section, publish first post.",
+    hubspotUrl:"https://www.linkedin.com/company/setup/new/",
+  },
+  {
+    id:"w1_7", group:"Assets", icon:"📄",
+    label:"Core sales assets drafted",
+    baseline:0, target:2, unit:"assets", format:"n",
+    why:"One-pager + demo script are blockers for sales calls. Nothing to leave behind right now.",
+    how:"One-pager (PDF) + live demo script. These unlock every other sales motion.",
+    hubspotUrl:null,
+  },
+];
+
+const WEEK2_KPIS = [
+  {
+    id:"w2_1", group:"Pipeline", icon:"📈",
+    label:"Deals that replied or moved stage",
+    baseline:0, target:3, unit:"deals", format:"n",
+    why:"20% response rate is realistic for warm contacts who asked to be contacted. Below 2 = messaging problem.",
+    how:"Track in HubSpot deal stages. Any reply, call booked, or stage move counts.",
+    hubspotUrl:"https://app.hubspot.com/deals/442934016",
+  },
+  {
+    id:"w2_2", group:"Pipeline", icon:"📅",
+    label:"Demo calls booked",
+    baseline:0, target:2, unit:"demos", format:"n",
+    why:"First conversion gate. A booked demo = meaningful intent. Target 2 from 14 contacts is 14%.",
+    how:"Include Calendly / HubSpot meeting link in first email. Follow up if no response after 3 days.",
+    hubspotUrl:"https://app.hubspot.com/deals/442934016",
+  },
+  {
+    id:"w2_3", group:"Email", icon:"📬",
+    label:"Reactivation sequence open rate",
+    baseline:0, target:40, unit:"%", format:"pct",
+    why:"41 warm users who already know the product. 40% is achievable — average cold email is 20-25%.",
+    how:"Strong subject line. Personalise first line. From a real person, not a brand address.",
+    hubspotUrl:"https://app.hubspot.com/sequences/442934016",
+  },
+  {
+    id:"w2_4", group:"Email", icon:"✉️",
+    label:"AAEP follow-up open rate",
+    baseline:0, target:35, unit:"%", format:"pct",
+    why:"These contacts specifically requested contact. Expect high open rate — below 30% = subject line issue.",
+    how:"Reference the AAEP survey in subject line. 'Following up on your StableTrack interest.'",
+    hubspotUrl:"https://app.hubspot.com/sequences/442934016",
+  },
+  {
+    id:"w2_5", group:"Email", icon:"💬",
+    label:"Replies received (all sequences)",
+    baseline:0, target:5, unit:"replies", format:"n",
+    why:"Any reply — positive, question, or objection — is signal. Silence = wrong messaging or wrong list.",
+    how:"Any reply triggers a personal response within 24h. Don't let warm leads go cold.",
+    hubspotUrl:"https://app.hubspot.com/contacts/442934016/contacts/list/view/all/",
+  },
+  {
+    id:"w2_6", group:"Revenue", icon:"💰",
+    label:"New paying customers",
+    baseline:1, target:2, unit:"customers", format:"n",
+    why:"One additional $199/mo customer = ARR doubles to $4,776. Realistic from 14 deals + 41 reactivations.",
+    how:"Prioritise demo calls. Make trial-to-paid frictionless — one-click upgrade, no call required.",
+    hubspotUrl:"https://app.hubspot.com/deals/442934016",
+  },
+  {
+    id:"w2_7", group:"Social", icon:"🔗",
+    label:"LinkedIn page followers",
+    baseline:0, target:25, unit:"followers", format:"n",
+    why:"Small equine vet LinkedIn community. 25 followers week 1 = team + close network. Foundation for reach.",
+    how:"Invite all team members, existing contacts, Asteris network to follow. Share first post internally.",
+    hubspotUrl:"https://www.linkedin.com/company/setup/new/",
+  },
+  {
+    id:"w2_8", group:"Social", icon:"👁️",
+    label:"First LinkedIn post impressions",
+    baseline:0, target:200, unit:"impressions", format:"n",
+    why:"Equine vet niche on LinkedIn is small and tight-knit. 200 impressions is meaningful reach here.",
+    how:"Post at 9am Tuesday or Wednesday. Tag relevant accounts. Ask team to comment (not just like).",
+    hubspotUrl:null,
+  },
+];
+
+const KPI_GROUP_COLOR = {
+  Outreach:"#C0392B", "Email Sequences":"#C6761E", Email:"#C6761E",
+  CRM:"#2563EB", Brand:"#7C3AED", Assets:"#B07A00",
+  Pipeline:"#3D8B37", Revenue:"#C6761E", Social:"#7C3AED",
+};
+
+function KpiRow({ kpi, actual, onUpdate }) {
+  const [editing, setEditing] = React.useState(false);
+  const [input, setInput]     = React.useState(actual !== null && actual !== undefined ? String(actual) : "");
+  const [showDetail, setShowDetail] = React.useState(false);
+  const gc = KPI_GROUP_COLOR[kpi.group] || C.amber;
+
+  const pct = kpi.format === "bool"
+    ? (actual >= 1 ? 100 : 0)
+    : kpi.format === "pct"
+      ? actual !== null ? Math.min(100, Math.round((actual / kpi.target) * 100)) : 0
+      : actual !== null ? Math.min(100, Math.round(((actual - kpi.baseline) / (kpi.target - kpi.baseline)) * 100)) : 0;
+
+  const done   = actual !== null && (kpi.format === "bool" ? actual >= 1 : actual >= kpi.target);
+  const behind = actual !== null && pct < 50;
+
+  const statusColor = done ? C.green : behind ? C.red : C.amber;
+  const statusLabel = done ? "✓ Done" : actual !== null ? `${pct}%` : "Not set";
+
+  function saveVal() {
+    const v = parseFloat(input);
+    if (!isNaN(v)) onUpdate(kpi.id, v);
+    else if (input.toLowerCase() === "yes" || input.toLowerCase() === "y") onUpdate(kpi.id, 1);
+    setEditing(false);
+  }
+
+  function fmtActual(v) {
+    if (v === null || v === undefined) return "—";
+    if (kpi.format === "bool") return v >= 1 ? "Yes ✓" : "No";
+    if (kpi.format === "pct") return v + "%";
+    return v.toLocaleString();
+  }
+  function fmtTarget(v) {
+    if (kpi.format === "bool") return "Yes";
+    if (kpi.format === "pct") return v + "%";
+    return v.toLocaleString();
+  }
+
+  return (
+    <div style={{ borderRadius:8, border:`1px solid ${done ? C.green+"33" : behind ? C.red+"33" : C.border}`, background: done ? "#F0FDF4" : "#fff", overflow:"hidden" }}>
+      <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 14px" }}>
+        {/* status dot */}
+        <div style={{ width:10, height:10, borderRadius:"50%", background:statusColor, flexShrink:0 }} />
+        {/* icon + label */}
+        <span style={{ fontSize:14, flexShrink:0 }}>{kpi.icon}</span>
+        <div style={{ flex:1, minWidth:0 }}>
+          <div style={{ fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700, color:C.espresso, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{kpi.label}</div>
+          <div style={{ display:"flex", gap:6, alignItems:"center", marginTop:3 }}>
+            <span style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, letterSpacing:".08em", textTransform:"uppercase", color:gc, background:gc+"15", padding:"1px 6px", borderRadius:3 }}>{kpi.group}</span>
+            <span style={{ fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted }}>baseline <strong>{kpi.format === "bool" ? "No" : kpi.format === "pct" ? kpi.baseline+"%" : kpi.baseline.toLocaleString()}</strong> → target <strong style={{ color:gc }}>{fmtTarget(kpi.target)} {kpi.unit !== "yes/no" ? kpi.unit : ""}</strong></span>
+          </div>
+        </div>
+        {/* progress bar */}
+        <div style={{ width:80, flexShrink:0 }}>
+          <div style={{ height:5, background:C.creamDk, borderRadius:3, overflow:"hidden" }}>
+            <div style={{ height:"100%", width:`${pct}%`, background:statusColor, borderRadius:3, transition:"width .3s" }} />
+          </div>
+        </div>
+        {/* actual input */}
+        <div style={{ flexShrink:0, textAlign:"right" }}>
+          {editing ? (
+            <div style={{ display:"flex", gap:4 }}>
+              <input autoFocus value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key==="Enter" && saveVal()}
+                placeholder={kpi.format === "bool" ? "yes/no" : "enter value"}
+                style={{ width:70, fontFamily:"Manrope,sans-serif", fontSize:11, border:`1.5px solid ${C.amber}`, borderRadius:4, padding:"3px 6px" }} />
+              <button onClick={saveVal} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:800, padding:"3px 8px", borderRadius:4, background:C.amber, border:"none", color:"#fff", cursor:"pointer" }}>✓</button>
+            </div>
+          ) : (
+            <div onClick={() => setEditing(true)} style={{ cursor:"pointer", fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700, color:statusColor, padding:"3px 8px", borderRadius:4, background:statusColor+"15", border:`1px solid ${statusColor}33`, whiteSpace:"nowrap" }}>
+              {fmtActual(actual)} <span style={{ fontSize:9, color:C.muted }}>✏</span>
+            </div>
+          )}
+        </div>
+        {/* detail toggle */}
+        <button onClick={() => setShowDetail(d => !d)} style={{ background:"none", border:"none", cursor:"pointer", color:C.muted, fontSize:13, padding:0, flexShrink:0 }}>{showDetail ? "▲" : "▼"}</button>
+        {kpi.hubspotUrl && <a href={kpi.hubspotUrl} target="_blank" rel="noopener noreferrer" style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, color:C.amber, textDecoration:"none", flexShrink:0 }}>↗</a>}
+      </div>
+      {showDetail && (
+        <div style={{ borderTop:`1px solid ${C.border}`, padding:"10px 14px", background:C.creamDk, display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
+          <div><div style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, letterSpacing:".1em", textTransform:"uppercase", color:C.muted, marginBottom:3 }}>Why it matters</div><div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.text, lineHeight:1.5 }}>{kpi.why}</div></div>
+          <div><div style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, letterSpacing:".1em", textTransform:"uppercase", color:C.muted, marginBottom:3 }}>How to hit it</div><div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.text, lineHeight:1.5 }}>{kpi.how}</div></div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function KpiScorecard() {
+  const emptyActuals = Object.fromEntries([...WEEK1_KPIS, ...WEEK2_KPIS].map(k => [k.id, null]));
+  const [actuals, setActuals] = React.useState(emptyActuals);
+  const [week, setWeek]       = React.useState("w1");
+
+  // Seed known values
+  React.useEffect(() => {
+    setActuals(a => ({
+      ...a,
+      w1_4: 1055,  // contacts imported
+      w1_1: 0,     // deals contacted
+      w2_6: 1,     // baseline 1 paying customer
+    }));
+  }, []);
+
+  function updateActual(id, val) {
+    setActuals(a => ({ ...a, [id]: val }));
+  }
+
+  const kpis   = week === "w1" ? WEEK1_KPIS : WEEK2_KPIS;
+  const done   = kpis.filter(k => { const a = actuals[k.id]; return a !== null && (k.format === "bool" ? a >= 1 : a >= k.target); }).length;
+  const behind = kpis.filter(k => { const a = actuals[k.id]; if (a === null) return false; const pct = k.format === "bool" ? (a>=1?100:0) : k.format==="pct" ? (a/k.target)*100 : ((a-k.baseline)/(k.target-k.baseline))*100; return pct < 50; }).length;
+  const notset = kpis.filter(k => actuals[k.id] === null).length;
+  const ovPct  = Math.round((done / kpis.length) * 100);
+
+  const dateRange = week === "w1" ? "Mar 12 – 19" : "Mar 20 – 26";
+
+  return (
+    <Card>
+      {/* Header */}
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:14, flexWrap:"wrap", gap:10 }}>
+        <div>
+          <Lbl style={{ marginBottom:2 }}>Weekly KPI Scorecard</Lbl>
+          <div style={{ fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted }}>Click any actual value to update · expand ▼ for why + how</div>
+        </div>
+        <div style={{ display:"flex", gap:6 }}>
+          {[["w1","Week 1 · "+dateRange],["w2","Week 2 · Mar 20–26"]].map(([v,l]) => (
+            <button key={v} onClick={() => setWeek(v)} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:700, padding:"5px 12px", borderRadius:6, cursor:"pointer", border:`1.5px solid ${week===v ? C.amber : C.border}`, background: week===v ? C.amber : "transparent", color: week===v ? "#fff" : C.muted }}>
+              {l}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Summary strip */}
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:10, marginBottom:14 }}>
+        {[
+          { val:done,      label:"On track",  color:C.green },
+          { val:behind,    label:"Behind",    color:C.red   },
+          { val:notset,    label:"Not set",   color:C.muted },
+          { val:ovPct+"%", label:"Complete",  color:C.amber },
+        ].map(s => (
+          <div key={s.label} style={{ background:C.creamDk, borderRadius:7, padding:"8px 12px", textAlign:"center" }}>
+            <div style={{ fontFamily:"Manrope,sans-serif", fontSize:18, fontWeight:700, color:s.color }}>{s.val}</div>
+            <div style={{ fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:700, textTransform:"uppercase", letterSpacing:".08em", color:C.muted, marginTop:2 }}>{s.label}</div>
+          </div>
+        ))}
+      </div>
+      <Bar pct={ovPct} h={5} style={{ marginBottom:16 }} />
+
+      {/* KPI rows */}
+      <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+        {kpis.map(k => <KpiRow key={k.id} kpi={k} actual={actuals[k.id]} onUpdate={updateActual} />)}
+      </div>
+
+      {/* Legend */}
+      <div style={{ display:"flex", gap:16, marginTop:12, flexWrap:"wrap" }}>
+        {[["🟢","On / done"],["🟡","In progress < 50%"],["🔴","Behind"],["—","Not yet entered"]].map(([i,l]) => (
+          <span key={l} style={{ fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted }}>{i} {l}</span>
+        ))}
+        <span style={{ fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted, marginLeft:"auto" }}>✏ = click to edit actual</span>
+      </div>
+    </Card>
+  );
+}
+
 const TABS = [
   {id:"overview",  label:"Overview"},
   {id:"icp",       label:"ICP & Market"},
   {id:"plan",      label:"Marketing Plan"},
   {id:"sequences", label:"Sequences"},
   {id:"metrics",   label:"Metrics"},
+  {id:"tasks",     label:"Tasks"},
+  {id:"assets",    label:"Assets"},
+  {id:"onboarding",label:"Onboarding"},
 ];
 
 // ── APP ───────────────────────────────────────────────────────────────────────
 function App() {
   const [tab, setTab]         = useState("overview");
-  const [avgDeal, setAvgDeal] = useState(2400);
+  function navigateTo(t) { setTab(t); window.scrollTo(0,0); }
+  const [avgDeal, setAvgDeal] = useState(2388);
   const [churn, setChurn]     = useState(8);
   const [target, setTarget]   = useState(500000);
 
@@ -385,14 +1816,15 @@ function App() {
 
       {/* BODY */}
       <div style={{padding:"22px 28px", maxWidth:1160, margin:"0 auto", display:"flex", flexDirection:"column", gap:18}}>
+        <AlertBar onNavigate={navigateTo} />
 
         {/* ── OVERVIEW ── */}
         {tab==="overview" && <>
           <Card>
             <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:14, flexWrap:"wrap", gap:10}}>
               <div>
-                <Lbl>2026 Revenue Progress</Lbl>
-                <div style={{fontFamily:"Fraunces,serif", fontSize:32, fontWeight:700, color:C.espresso, lineHeight:1}}>
+                <Lbl><Tip text="Annual Recurring Revenue — the total yearly subscription value from all paying customers. Currently $2,388 (1 user × $199/mo × 12). Target: $500K by Dec 2026, which requires ~209 customers.">2026 Revenue Progress</Tip></Lbl>
+                <div style={{fontFamily:"Manrope,sans-serif", fontSize:22, fontWeight:700, color:C.espresso, lineHeight:1}}>
                   {$m(currentARR)}
                   <span style={{fontFamily:"Manrope,sans-serif", fontSize:14, color:C.muted, fontWeight:400}}> / {$m(target)}</span>
                 </div>
@@ -407,15 +1839,15 @@ function App() {
           </Card>
 
           <div className="g4">
-            <Stat val={$n(HUBSPOT.contacts.total)} label="Total contacts" sub="805 in HubSpot — 528 to re-import" />
-            <Stat val="14" label="Requested follow-up" sub="AAEP survey respondents" accent={C.brown} />
-            <Stat val="1" label="Active paid users" sub="41 inactive · 1 at-risk" accent={C.green} />
-            <Stat val="14" label="Open pipeline deals" sub={`${$m(totalPipe)} total value`} accent={C.espresso} />
+            <Stat val={$n(HUBSPOT.contacts.total)} label={<Tip text="Total unique contacts across all sources: AAEP Conference (930), Survey (49), Salesforce/KS (425), StableTrack Users (43). HubSpot shows 805 — 528 need re-importing.">Total contacts</Tip>} sub="805 in HubSpot — 528 to re-import" />
+            <Stat val="14" label={<Tip text="14 AAEP survey respondents who explicitly opted in to be contacted. Warm contacts — they know StableTrack. Highest conversion potential in the entire database.">Requested follow-up</Tip>} sub="AAEP survey respondents" accent={C.brown} />
+            <Stat val="1" label={<Tip text="1 confirmed paying user at $199/mo. 41 others tried and went inactive. Reactivating 10 = ~$24K ARR with zero acquisition cost — highest leverage action right now.">Active paid user</Tip>} sub="41 inactive · 1 at-risk" accent={C.green} />
+            <Stat val="14" label={<Tip text="14 open HubSpot deals at $2,388 each (=$199/mo x 12). Total pipeline value: $33,432. All are AAEP survey contacts — none have been contacted yet.">Open pipeline deals</Tip>} sub={`${$m(totalPipe)} total value`} accent={C.espresso} />
           </div>
 
           <div className="g2">
             <Card>
-              <Lbl>Contact Lifecycle Funnel (Live)</Lbl>
+              <Lbl><Tip text="HubSpot lifecycle stages for all 805 imported contacts. Customers = Keystone PACS accounts (existing Asteris relationship). Subscribers = email list. Leads = active sales consideration.">Contact Lifecycle Funnel (Live)</Tip></Lbl>
               {[
                 {label:"All Contacts",            n:805, pct:100,           color:C.amber},
                 {label:"Customers (KS accounts)", n:411, pct:(411/805)*100, color:C.brown},
@@ -442,7 +1874,7 @@ function App() {
                   {label:"Inactive", n:37, color:C.red},
                 ].map((u,i) => (
                   <div key={i} style={{flex:1, textAlign:"center", padding:"12px 8px", borderRadius:8, background:u.color+"12", border:`1.5px solid ${u.color}28`}}>
-                    <div style={{fontFamily:"Fraunces,serif", fontSize:28, fontWeight:700, color:u.color}}>{u.n}</div>
+                    <div style={{fontFamily:"Manrope,sans-serif", fontSize:22, fontWeight:700, color:u.color}}>{u.n}</div>
                     <div style={{fontFamily:"Manrope,sans-serif", fontSize:10, fontWeight:700, color:u.color, marginTop:3, letterSpacing:"0.06em", textTransform:"uppercase"}}>{u.label}</div>
                   </div>
                 ))}
@@ -462,27 +1894,30 @@ function App() {
                 {HUBSPOT.sources.map((s,i) => (
                   <tr key={i}>
                     <td><strong>{s.source}</strong></td>
-                    <td style={{fontFamily:"Fraunces,serif", fontSize:16, fontWeight:600, color:C.espresso}}>{$n(s.count)}</td>
+                    <td style={{fontFamily:"Manrope,sans-serif", fontSize:14, fontWeight:700, color:C.espresso}}>{$n(s.count)}</td>
                     <td style={{color:C.muted}}>{s.notes}</td>
                     <td><Badge color={C.green}>Imported</Badge></td>
                   </tr>
                 ))}
                 <tr style={{background:C.creamDk}}>
                   <td><strong>Total unique (deduped by email)</strong></td>
-                  <td style={{fontFamily:"Fraunces,serif", fontSize:16, fontWeight:600, color:C.espresso}}>1,333</td>
+                  <td style={{fontFamily:"Manrope,sans-serif", fontSize:14, fontWeight:700, color:C.espresso}}>1,333</td>
                   <td style={{color:C.red, fontWeight:600}}>HubSpot shows 805 — 528 missing</td>
                   <td><Badge color={C.red}>Needs re-import</Badge></td>
                 </tr>
               </tbody>
             </table>
           </Card>
+
+          <MiniTaskWidget onNavigate={navigateTo} />
+          <AIActivityPanel />
         </>}
 
         {/* ── ICP & MARKET ── */}
         {tab==="icp" && <>
           <Card style={{background:C.espresso}}>
             <Lbl style={{color:C.muted}}>Pillar 1 — Target Audience & Market Definition</Lbl>
-            <div style={{fontFamily:"Fraunces,serif", fontSize:20, color:"#fff", fontWeight:600}}>ICP Personas · Segmentation · Competitive Landscape</div>
+            <div style={{fontFamily:"Fraunces,serif", fontSize:14, color:"#fff", fontWeight:600, letterSpacing:".01em"}}>ICP Personas · Segmentation · Competitive Landscape</div>
           </Card>
 
           <div className="g3">
@@ -490,13 +1925,13 @@ function App() {
               {title:"Ambulatory Equine Vet", tag:"Primary ICP", color:C.amber,
                items:["Solo or 1–3 vet mobile practice","50–300 active patient horses","On HVMS, Ezyvet, or paper","Pain: admin burden on the road","Decision maker: sole owner/vet"], urgency:"High"},
               {title:"Equine-Only Clinic", tag:"Secondary ICP", color:C.brown,
-               items:["2–8 vet practice","300–1,000 active patients","Frustrated with HVMS cost/support","Pain: multi-vet record coordination","Decision: practice manager + lead vet"], urgency:"Medium"},
+               items:["2–8 vet mixed equine clinic","300–1,000 active patients","Trapped on ezyVet (small animal software at $500-800/mo)","Pain: multi-vet record coordination + wrong-fit software","Decision: practice manager + lead vet"], urgency:"Medium"},
               {title:"Teaching Hospital / University", tag:"Tertiary", color:C.blue,
                items:["University-affiliated equine programs","Resident training + complex caseload","Currently on VetView or Cornerstone","Pain: teaching + clinical workflow mix","Decision: dept head + IT committee"], urgency:"Low"},
             ].map((p,i) => (
               <Card key={i} topAccent={p.color}>
                 <Badge color={p.color}>{p.tag}</Badge>
-                <div style={{fontFamily:"Fraunces,serif", fontSize:15, fontWeight:600, margin:"10px 0"}}>{p.title}</div>
+                <div style={{fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700, margin:"10px 0"}}>{p.title}</div>
                 {p.items.map((it,j) => (
                   <div key={j} style={{fontFamily:"Manrope,sans-serif", fontSize:12, marginBottom:5, paddingLeft:12, position:"relative", lineHeight:1.4}}>
                     <span style={{position:"absolute", left:0, color:p.color, fontWeight:700}}>–</span>{it}
@@ -511,7 +1946,7 @@ function App() {
           </div>
 
           <Card>
-            <Lbl>TAM · SAM · SOM — N. America</Lbl>
+            <Lbl><Tip text="TAM = Total Addressable Market (all equine practices). SAM = Serviceable Addressable Market (ones you can realistically reach). SOM = Serviceable Obtainable Market (realistic Year 1 target). Use SOM for planning, TAM for investor conversations.">TAM · SAM · SOM — N. America</Tip></Lbl>
             <div style={{display:"flex", gap:16, flexWrap:"wrap"}}>
               {[
                 {tier:"TAM", val:"~6,800", desc:"All AAEP-member equine practices in North America", color:C.amber},
@@ -519,9 +1954,21 @@ function App() {
                 {tier:"SOM", val:"~200",   desc:"Year 1 realistic target: 200 paying practices by Dec 2026", color:C.espresso},
               ].map((m,i) => (
                 <div key={i} style={{flex:1, minWidth:160, textAlign:"center", padding:"18px 16px", borderRadius:10, background:m.color+"0E", border:`2px solid ${m.color}22`}}>
-                  <div style={{fontFamily:"Fraunces,serif", fontSize:26, fontWeight:700, color:m.color}}>{m.tier}</div>
-                  <div style={{fontFamily:"Fraunces,serif", fontSize:22, fontWeight:600, color:C.espresso, marginTop:4}}>{m.val}</div>
+                  <div style={{fontFamily:"Manrope,sans-serif", fontSize:20, fontWeight:700, color:m.color}}>{m.tier}</div>
+                  <div style={{fontFamily:"Manrope,sans-serif", fontSize:16, fontWeight:700, color:C.espresso, marginTop:4}}>{m.val}</div>
                   <div style={{fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginTop:6, lineHeight:1.4}}>{m.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:12, marginTop:14, padding:"12px 16px", background:C.creamDk, borderRadius:8}}>
+              {[
+                {abbr:"TAM", full:"Total Addressable Market",      note:"The entire opportunity if you captured every possible customer. All AAEP-member equine practices in N. America. Used for investor conversations."},
+                {abbr:"SAM", full:"Serviceable Addressable Market", note:"The portion of TAM you can realistically reach with your current product and channels — ambulatory + equine-only clinics in English-speaking markets."},
+                {abbr:"SOM", full:"Serviceable Obtainable Market",  note:"The realistic slice you can win in Year 1, given team and resources. This is your actual planning number — 200 paying practices by Dec 2026."},
+              ].map((d,i) => (
+                <div key={i}>
+                  <div><span style={{fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:800, color:C.brown}}>{d.abbr}</span> <span style={{fontFamily:"Manrope,sans-serif", fontSize:11, fontWeight:700, color:C.espresso}}>— {d.full}</span></div>
+                  <div style={{fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted, marginTop:3, lineHeight:1.55}}>{d.note}</div>
                 </div>
               ))}
             </div>
@@ -535,17 +1982,16 @@ function App() {
                 {[
                   {pms:"None / Paper",        n:7, opp:"Highest", angle:"Zero switching cost. First digital home for their records."},
                   {pms:"HVMS",                n:8, opp:"High",    angle:"Modern, mobile-first, at lower cost. Built for how they actually work."},
-                  {pms:"Ezyvet",              n:5, opp:"Medium",  angle:"Not equine-specific. StableTrack speaks their language."},
+                  {pms:"ezyVet",              n:5, opp:"Highest",  angle:"Built for small animal, priced for hospitals (~$500–800/mo). Equine vets use it reluctantly — no equine-specific option existed until now."},
                   {pms:"Shepherd",            n:3, opp:"Medium",  angle:"Newer but still mixed-species. Equine vets deserve their own."},
-                  {pms:"DVM Manager",         n:2, opp:"High",    angle:"Legacy, clunky, desktop-only. Replace with something built for mobile."},
-                  {pms:"Cornerstone/Avimark", n:2, opp:"High",    angle:"Desktop-only in a mobile-first world. Make the switch."},
-                  {pms:"ImproMed / Antech",   n:2, opp:"Medium",  angle:"Mixed-species generic. StableTrack is built exclusively for equine."},
+                  {pms:"DVM Manager / Advantage (sunset)", n:2, opp:"Highest", angle:"No active support — these vets need to move NOW. Lowest friction switch possible."},
+                  {pms:"ImproMed",            n:2, opp:"Medium",   angle:"Mixed-species generic. StableTrack is built exclusively for equine."},
                 ].map((r,i) => {
                   const col = r.opp==="Highest"?C.green:r.opp==="High"?C.yellow:C.muted;
                   return (
                     <tr key={i}>
                       <td><strong>{r.pms}</strong></td>
-                      <td style={{fontFamily:"Fraunces,serif", fontSize:16, fontWeight:600, color:C.espresso}}>{r.n}</td>
+                      <td style={{fontFamily:"Manrope,sans-serif", fontSize:14, fontWeight:700, color:C.espresso}}>{r.n}</td>
                       <td><Badge color={col}>{r.opp}</Badge></td>
                       <td style={{color:C.muted, fontSize:11}}>{r.angle}</td>
                     </tr>
@@ -560,12 +2006,12 @@ function App() {
         {tab==="plan" && <>
           <Card style={{background:C.espresso}}>
             <Lbl style={{color:C.muted}}>2026 StableTrack Marketing Plan</Lbl>
-            <div style={{fontFamily:"Fraunces,serif", fontSize:20, color:"#fff", fontWeight:600}}>Messaging · Channels · Content · 90-Day Roadmap</div>
+            <div style={{fontFamily:"Fraunces,serif", fontSize:14, color:"#fff", fontWeight:600, letterSpacing:".01em"}}>Messaging · Channels · Content · 90-Day Roadmap</div>
           </Card>
 
           <Card>
             <Lbl>Core Value Proposition</Lbl>
-            <div style={{fontFamily:"Fraunces,serif", fontSize:20, fontWeight:600, color:C.espresso, lineHeight:1.3, marginBottom:14}}>
+            <div style={{fontFamily:"Manrope,sans-serif", fontSize:14, fontWeight:700, color:C.espresso, lineHeight:1.5, marginBottom:14}}>
               "The only practice management platform built exclusively for equine vets on the move."
             </div>
             <div style={{display:"flex", gap:8, flexWrap:"wrap"}}>
@@ -621,7 +2067,7 @@ function App() {
               <Card key={i}>
                 <div style={{display:"flex", justifyContent:"space-between", marginBottom:10}}>
                   <div>
-                    <div style={{fontFamily:"Fraunces,serif", fontSize:15, fontWeight:600}}>{ch.name}</div>
+                    <div style={{fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700}}>{ch.name}</div>
                     <div style={{fontFamily:"Manrope,sans-serif", fontSize:11, color:C.muted, marginTop:3, lineHeight:1.4}}>{ch.desc}</div>
                   </div>
                   <Badge color={ch.color} style={{whiteSpace:"nowrap", marginLeft:10}}>{ch.priority}</Badge>
@@ -650,7 +2096,7 @@ function App() {
               <div key={i} style={{display:"flex", gap:14, marginBottom:12, padding:"12px 14px", background:C.creamDk, borderRadius:8}}>
                 <div style={{minWidth:90}}>
                   <div style={{fontFamily:"Manrope,sans-serif", fontSize:9, fontWeight:800, color:C.muted, letterSpacing:"0.1em", textTransform:"uppercase"}}>{p.period}</div>
-                  <div style={{fontFamily:"Fraunces,serif", fontSize:13, fontWeight:600, color:C.espresso, marginTop:3, lineHeight:1.3}}>{p.title}</div>
+                  <div style={{fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700, color:C.espresso, marginTop:3}}>{p.title}</div>
                 </div>
                 <div style={{borderLeft:`2px solid ${C.border}`, paddingLeft:14, flex:1}}>
                   {p.tasks.map((t,j) => (
@@ -665,12 +2111,28 @@ function App() {
         {/* ── SEQUENCES ── */}
         {tab==="sequences" && <SequencePlanner />}
 
+        {/* ── TASKS ── */}
+        {tab==="tasks" && (
+          <div style={{ display:"flex", flexDirection:"column", gap:18 }}>
+            <TaskBoard />
+            <AIActivityPanel />
+          </div>
+        )}
+
+        {/* ── ASSETS ── */}
+        {tab==="assets" && <AssetLibrary />}
+
+        {/* ── ONBOARDING ── */}
+        {tab==="onboarding" && <OnboardingTab />}
+
         {/* ── METRICS ── */}
         {tab==="metrics" && <>
           <Card style={{background:C.espresso}}>
             <Lbl style={{color:C.muted}}>Pillar 5 — Metrics & Optimization</Lbl>
-            <div style={{fontFamily:"Fraunces,serif", fontSize:20, color:"#fff", fontWeight:600}}>KPIs · Unit Economics · Feedback Loops</div>
+            <div style={{fontFamily:"Fraunces,serif", fontSize:14, color:"#fff", fontWeight:600, letterSpacing:".01em"}}>KPIs · Unit Economics · Feedback Loops</div>
           </Card>
+
+          <KpiScorecard />
 
           <Card>
             <Lbl>Assumptions (Edit to update all calculations)</Lbl>
@@ -682,10 +2144,10 @@ function App() {
           </Card>
 
           <div className="g4">
-            <Stat val={$m(ltv)} label="Customer LTV" sub={`At ${churn}% annual churn`} accent={ltv>12000?C.green:C.red} />
-            <Stat val={$m(cac)} label="Est. CAC" sub="AAEP + outreach blended" accent={C.brown} />
-            <Stat val={ltvCac.toFixed(1)+"x"} label="LTV : CAC ratio" sub={ltvCac>=3?"Healthy":"Below 3x — needs work"} accent={ltvCac>=3?C.green:C.red} />
-            <Stat val={Math.round(cac/(avgDeal/12))+" mo"} label="CAC payback" sub="Months to recover acquisition cost" accent={cac/(avgDeal/12)<12?C.green:C.red} />
+            <Stat val={$m(ltv)} label={<Tip text="Lifetime Value = Avg Deal ÷ Annual Churn Rate. At $2,388 ARR and 8% churn, the average customer is worth $29,850 over their lifetime. Higher = healthier business model.">Customer LTV</Tip>} sub={`At ${churn}% annual churn`} accent={ltv>12000?C.green:C.red} />
+            <Stat val={$m(cac)} label={<Tip text="Customer Acquisition Cost — estimated at $850 blended across AAEP conference attendance, outreach, and content. Will increase if paid ads are added. Target: keep below $2,400.">Est. CAC</Tip>} sub="AAEP + outreach blended" accent={C.brown} />
+            <Stat val={ltvCac.toFixed(1)+"x"} label={<Tip text="LTV:CAC ratio — how many dollars you make for every dollar spent acquiring a customer. Above 3x is healthy for SaaS. Below 3x means acquisition is too expensive relative to what customers are worth.">LTV : CAC ratio</Tip>} sub={ltvCac>=3?"Healthy":"Below 3x — needs work"} accent={ltvCac>=3?C.green:C.red} />
+            <Stat val={Math.round(cac/(avgDeal/12))+" mo"} label={<Tip text="How many months until a customer pays back their acquisition cost. Calculated as CAC ÷ Monthly Revenue. Under 12 months is the SaaS benchmark. Currently ~4 months — excellent.">CAC payback</Tip>} sub="Months to recover acquisition cost" accent={cac/(avgDeal/12)<12?C.green:C.red} />
           </div>
 
           <Card>
@@ -734,7 +2196,7 @@ function App() {
                  items:["This is your first paying proof point — treat them as a VIP","Aletha Carson: KS + StableTrack cross-sell proof","Annie Schwartz + Monadnock: ambulatory use case","Actions: NPS survey, case study ask, referral programme invite"]},
               ].map((s,i) => (
                 <div key={i} style={{padding:"14px 16px", background:s.color+"0A", border:`1.5px solid ${s.color}22`, borderRadius:9}}>
-                  <div style={{fontFamily:"Fraunces,serif", fontSize:14, fontWeight:600, color:s.color, marginBottom:9}}>{s.title}</div>
+                  <div style={{fontFamily:"Manrope,sans-serif", fontSize:12, fontWeight:700, color:s.color, marginBottom:9}}>{s.title}</div>
                   {s.items.map((it,j) => (
                     <div key={j} style={{fontFamily:"Manrope,sans-serif", fontSize:12, marginBottom:5, lineHeight:1.4}}>{it}</div>
                   ))}
@@ -751,6 +2213,7 @@ function App() {
         <span style={{fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted}}>HubSpot: 805 contacts · 14 pipeline deals · 1 paying user · 41 inactive · 43 total users · Mar 11, 2026</span>
         <span style={{fontFamily:"Manrope,sans-serif", fontSize:10, color:C.muted}}>StableTrack — Marketing Command Center</span>
       </div>
+      <AIAgent />
     </div>
   );
 }
